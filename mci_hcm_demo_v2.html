@@ -1,0 +1,2192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCI — Competitive Intelligence | Frontline HCM</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --fl-orange: #F47B20;
+  --fl-orange-light: #FEF0E6;
+  --fl-orange-mid: #FDDFC8;
+  --fl-blue: #1B4F8A;
+  --fl-blue-light: #EBF1F9;
+  --fl-blue-mid: #C5D8EE;
+  --bg: #F7F8FA;
+  --surface: #FFFFFF;
+  --surface-2: #F0F2F5;
+  --border: #E2E6EC;
+  --border-strong: #C8D0DA;
+  --text-primary: #151C28;
+  --text-secondary: #5A6478;
+  --text-muted: #9BA5B5;
+  --green: #1A8A5A;
+  --green-light: #E8F7F1;
+  --green-mid: #B8E6D4;
+  --red: #C0392B;
+  --red-light: #FDECEA;
+  --red-mid: #F5C2BC;
+  --amber: #C07010;
+  --amber-light: #FDF5E6;
+  --amber-mid: #F0D8A0;
+  --purple: #6B3FA0;
+  --purple-light: #F2EDF9;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.06);
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  min-height: 100vh;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ── HEADER ─────────────────────────────────────────────────────── */
+header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 28px;
+  height: 58px;
+  display: flex; align-items:center; justify-content:space-between;
+  position: sticky; top:0; z-index:200;
+  box-shadow: var(--shadow-sm);
+}
+
+.logo {
+  display: flex; align-items:center; gap: 12px;
+}
+
+.logo-wordmark {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--fl-blue);
+  letter-spacing: -0.02em;
+}
+
+.logo-sep { color: var(--border-strong); font-weight: 300; }
+
+.logo-product {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fl-orange);
+  letter-spacing: 0.02em;
+}
+
+.header-meta {
+  display: flex; align-items:center; gap: 16px;
+}
+
+.status-pill {
+  display: flex; align-items:center; gap: 6px;
+  background: var(--green-light);
+  border: 1px solid var(--green-mid);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--green);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.status-pill::before {
+  content:'';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: blink 2s infinite;
+}
+
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.demo-pill {
+  background: var(--fl-orange-light);
+  border: 1px solid var(--fl-orange-mid);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--fl-orange);
+  letter-spacing: 0.08em;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ── LAYOUT ──────────────────────────────────────────────────────── */
+.app {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: calc(100vh - 58px);
+}
+
+/* ── SIDEBAR ─────────────────────────────────────────────────────── */
+aside {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 20px 16px;
+  overflow-y: auto;
+}
+
+.sidebar-section-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0 10px;
+  margin: 20px 0 8px;
+}
+
+.sidebar-section-label:first-child { margin-top: 0; }
+
+.comp-card {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: all 0.16s;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.comp-card:hover {
+  background: var(--bg);
+  border-color: var(--border);
+}
+
+.comp-card.active {
+  background: var(--fl-blue-light);
+  border-color: var(--fl-blue-mid);
+}
+
+.comp-card-top {
+  display: flex; align-items:center; justify-content:space-between;
+  margin-bottom: 4px;
+}
+
+.comp-card-name {
+  font-weight: 700;
+  font-size: 13.5px;
+  color: var(--text-primary);
+}
+
+.comp-card.active .comp-card-name { color: var(--fl-blue); }
+
+.threat-badge {
+  font-size: 9.5px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.06em;
+}
+
+.threat-high { background: var(--red-light); color: var(--red); }
+.threat-med  { background: var(--amber-light); color: var(--amber); }
+.threat-low  { background: var(--green-light); color: var(--green); }
+
+.comp-card-sub {
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+.sidebar-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 16px 0;
+}
+
+.sidebar-info {
+  background: var(--fl-orange-light);
+  border: 1px solid var(--fl-orange-mid);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  font-size: 12px;
+  color: var(--fl-orange);
+  line-height: 1.5;
+}
+
+.sidebar-info strong { display: block; margin-bottom: 3px; font-weight: 700; }
+
+/* ── MAIN ────────────────────────────────────────────────────────── */
+main {
+  padding: 28px 32px;
+  overflow-y: auto;
+  max-height: calc(100vh - 58px);
+}
+
+/* ── COMPETITOR HEADER ───────────────────────────────────────────── */
+.comp-header {
+  margin-bottom: 24px;
+  animation: slideIn 0.25s ease;
+}
+
+@keyframes slideIn {
+  from { opacity:0; transform:translateY(6px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.comp-header-top {
+  display: flex; align-items:flex-start; justify-content:space-between;
+  margin-bottom: 10px;
+}
+
+.comp-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.comp-tagline {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.comp-meta-pills {
+  display: flex; gap: 8px; flex-wrap:wrap; align-items:center;
+}
+
+.meta-pill {
+  display: inline-flex; align-items:center; gap: 5px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+}
+
+/* ── TABS ────────────────────────────────────────────────────────── */
+.tabs {
+  display: flex; gap: 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 24px;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 10px 20px 12px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.15s;
+  display: flex; align-items:center; gap: 7px;
+}
+
+.tab-btn:hover { color: var(--text-primary); }
+
+.tab-btn.active {
+  color: var(--fl-orange);
+  border-bottom-color: var(--fl-orange);
+}
+
+.tab-star {
+  background: var(--fl-orange);
+  color: white;
+  font-size: 8px;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.tab-content { display:none; }
+.tab-content.active { display:block; animation: slideIn 0.2s ease; }
+
+/* ── CARDS ───────────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.card + .card { margin-top: 16px; }
+
+.card-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  display: flex; align-items:center; gap: 7px;
+}
+
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+.grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+
+/* ── STATS ───────────────────────────────────────────────────────── */
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ── SUMMARY BANNER ──────────────────────────────────────────────── */
+.summary-banner {
+  background: linear-gradient(135deg, var(--fl-blue-light) 0%, #ffffff 100%);
+  border: 1px solid var(--fl-blue-mid);
+  border-left: 4px solid var(--fl-blue);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.summary-banner-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fl-blue);
+  margin-bottom: 8px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.summary-banner-text {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--text-primary);
+}
+
+/* ── INSIGHT ITEMS ───────────────────────────────────────────────── */
+.insight-list { display:flex; flex-direction:column; gap:8px; }
+
+.insight-item {
+  display: flex; gap: 10px; align-items:flex-start;
+  padding: 11px 14px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  border: 1px solid transparent;
+  transition: border-color 0.12s;
+}
+
+.insight-item:hover { border-color: var(--border); }
+
+.i-dot {
+  flex-shrink:0;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  margin-top: 6px;
+}
+
+.conf-badge {
+  display: inline-block;
+  font-size: 9px;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.conf-high { background: var(--green-light); color: var(--green); }
+.conf-med  { background: var(--amber-light); color: var(--amber); }
+.conf-low  { background: var(--red-light); color: var(--red); }
+
+/* ── TRAP QUESTIONS ──────────────────────────────────────────────── */
+.trap-card {
+  background: var(--amber-light);
+  border: 1px solid var(--amber-mid);
+  border-left: 4px solid var(--amber);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 12px;
+}
+
+.trap-question {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-primary);
+  margin-bottom: 7px;
+  font-style: italic;
+}
+
+.trap-why {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.trap-why strong { color: var(--amber); }
+
+/* ── TALKING POINTS ──────────────────────────────────────────────── */
+.tp-card {
+  background: var(--fl-blue-light);
+  border: 1px solid var(--fl-blue-mid);
+  border-left: 4px solid var(--fl-blue);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 12px;
+}
+
+.tp-headline {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--fl-blue);
+  margin-bottom: 6px;
+}
+
+.tp-body {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ── BATTLECARD ──────────────────────────────────────────────────── */
+.bc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.bc-box {
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+
+.bc-box.strengths {
+  background: var(--red-light);
+  border: 1px solid var(--red-mid);
+}
+
+.bc-box.weaknesses {
+  background: var(--green-light);
+  border: 1px solid var(--green-mid);
+}
+
+.bc-box.position {
+  background: var(--fl-blue-light);
+  border: 1px solid var(--fl-blue-mid);
+  grid-column: span 2;
+}
+
+.bc-box-title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex; align-items:center; gap: 7px;
+}
+
+.bc-box.strengths .bc-box-title { color: var(--red); }
+.bc-box.weaknesses .bc-box-title { color: var(--green); }
+.bc-box.position .bc-box-title { color: var(--fl-blue); }
+
+.bc-item {
+  display: flex; gap: 8px; align-items:flex-start;
+  font-size: 13px;
+  line-height: 1.55;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.bc-item:last-child { margin-bottom:0; padding-bottom:0; border-bottom:none; }
+
+.bc-bullet {
+  flex-shrink:0;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  margin-top: 6px;
+}
+
+.bc-box.strengths .bc-bullet { background: var(--red); }
+.bc-box.weaknesses .bc-bullet { background: var(--green); }
+.bc-box.position .bc-bullet { background: var(--fl-blue); }
+
+/* ── TIMELINE ────────────────────────────────────────────────────── */
+.timeline { display:flex; flex-direction:column; }
+
+.tl-item {
+  display: flex; gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+.tl-item:last-child { border-bottom: none; }
+
+.tl-date {
+  flex-shrink:0; width: 76px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding-top: 2px;
+}
+
+.tl-marker {
+  flex-shrink:0;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex; align-items:center; justify-content:center;
+  font-size: 13px;
+  margin-top: -1px;
+}
+
+.tl-marker.threat { background: var(--red-light); }
+.tl-marker.opportunity { background: var(--green-light); }
+.tl-marker.neutral { background: var(--amber-light); }
+
+.tl-body { flex:1; }
+.tl-title { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+.tl-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.55; }
+
+.tl-tag {
+  display: inline-block;
+  font-size: 9.5px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  letter-spacing: 0.06em;
+}
+
+/* ── MCI ANSWERS (HERO) ──────────────────────────────────────────── */
+.answers-layout {
+  display: grid;
+  grid-template-columns: 1fr 310px;
+  gap: 20px;
+  height: calc(100vh - 230px);
+  min-height: 520px;
+}
+
+.chat-wrap {
+  display: flex; flex-direction:column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.chat-top {
+  background: var(--fl-blue);
+  padding: 16px 22px;
+  display: flex; align-items:center; gap: 14px;
+}
+
+.chat-top-icon {
+  width: 38px; height: 38px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  display: flex; align-items:center; justify-content:center;
+  font-size: 18px;
+  flex-shrink:0;
+}
+
+.chat-top-text { flex:1; }
+.chat-top-title {
+  font-weight: 700;
+  font-size: 15px;
+  color: white;
+}
+.chat-top-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.65);
+  margin-top: 1px;
+}
+
+.chat-status {
+  display: flex; align-items:center; gap: 5px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.7);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.chat-status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #5EE8A0;
+  box-shadow: 0 0 8px #5EE8A0;
+  animation: blink 2s infinite;
+}
+
+.chat-messages {
+  flex:1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex; flex-direction:column; gap: 14px;
+  background: var(--bg);
+}
+
+.chat-messages::-webkit-scrollbar { width: 4px; }
+.chat-messages::-webkit-scrollbar-track { background: transparent; }
+.chat-messages::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 2px; }
+
+.msg { max-width: 88%; animation: slideIn 0.2s ease; }
+.msg.user { align-self: flex-end; }
+.msg.bot  { align-self: flex-start; }
+
+.msg-bubble {
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-size: 13.5px;
+  line-height: 1.65;
+}
+
+.msg.user .msg-bubble {
+  background: var(--fl-orange);
+  color: white;
+  border-radius: 14px 14px 3px 14px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(244,123,32,0.3);
+}
+
+.msg.bot .msg-bubble {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px 14px 14px 3px;
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.msg-time {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.msg.user .msg-time { text-align:right; }
+
+.msg-bubble strong { color: var(--fl-blue); }
+.msg.user .msg-bubble strong { color: white; }
+
+.msg-bubble em {
+  display: block;
+  background: var(--fl-orange-light);
+  border-left: 3px solid var(--fl-orange);
+  padding: 6px 10px;
+  border-radius: 0 6px 6px 0;
+  margin: 8px 0;
+  font-style: normal;
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.typing {
+  display: flex; gap: 5px; align-items:center;
+  padding: 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px 14px 14px 3px;
+  width: fit-content;
+  box-shadow: var(--shadow-sm);
+}
+
+.typing span {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--fl-orange);
+  opacity: 0.4;
+  animation: tdot 1.4s infinite;
+}
+
+.typing span:nth-child(2) { animation-delay: 0.2s; }
+.typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes tdot { 0%,60%,100%{opacity:0.4;transform:translateY(0)} 30%{opacity:1;transform:translateY(-4px)} }
+
+.chat-footer {
+  padding: 14px 16px;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  display: flex; gap: 10px;
+}
+
+.chat-input {
+  flex:1;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13.5px;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.chat-input:focus {
+  border-color: var(--fl-orange);
+  box-shadow: 0 0 0 3px rgba(244,123,32,0.1);
+}
+
+.chat-input::placeholder { color: var(--text-muted); }
+
+.chat-send {
+  background: var(--fl-orange);
+  border: none;
+  border-radius: 10px;
+  width: 42px; height: 42px;
+  cursor: pointer;
+  display: flex; align-items:center; justify-content:center;
+  color: white;
+  font-size: 17px;
+  transition: all 0.15s;
+  box-shadow: 0 2px 8px rgba(244,123,32,0.3);
+}
+
+.chat-send:hover {
+  background: #D96910;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(244,123,32,0.4);
+}
+
+/* ── RIGHT PANEL ─────────────────────────────────────────────────── */
+.right-panel {
+  display: flex; flex-direction:column; gap: 14px;
+  overflow-y: auto;
+}
+
+.qs-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+}
+
+.qs-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  display: flex; align-items:center; gap: 7px;
+}
+
+.q-btn {
+  width: 100%;
+  text-align: left;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s;
+  line-height: 1.4;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.q-btn:hover {
+  border-color: var(--fl-orange);
+  color: var(--fl-orange);
+  background: var(--fl-orange-light);
+  transform: translateX(2px);
+}
+
+.q-btn:last-child { margin-bottom: 0; }
+
+.tip-card {
+  background: var(--fl-orange-light);
+  border: 1px solid var(--fl-orange-mid);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+.tip-title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fl-orange);
+  margin-bottom: 8px;
+}
+
+.tip-body {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ── WIN-BACK ────────────────────────────────────────────────────── */
+.wb-hero {
+  background: linear-gradient(135deg, #EAF7F0 0%, #ffffff 100%);
+  border: 1px solid var(--green-mid);
+  border-left: 4px solid var(--green);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+.wb-hero-label {
+  font-size: 10px; font-weight: 800; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--green);
+  font-family: 'JetBrains Mono', monospace; margin-bottom: 8px;
+  display: flex; align-items: center; gap: 8px;
+}
+.wb-hero-label::after {
+  content: ''; flex: 1; height: 1px; background: var(--green-mid);
+}
+.wb-hero-text {
+  font-size: 14.5px; line-height: 1.7; color: var(--text-primary);
+}
+
+.wb-section-title {
+  font-size: 10px; font-weight: 800; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  margin: 24px 0 12px;
+  display: flex; align-items: center; gap: 10px;
+}
+.wb-section-title::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+
+.wb-trigger-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  margin-bottom: 8px;
+}
+.wb-trigger-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.wb-trigger-card:hover {
+  border-color: var(--green-mid);
+  box-shadow: var(--shadow-md);
+}
+.wb-trigger-top {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  margin-bottom: 10px; gap: 8px;
+}
+.wb-trigger-signal {
+  font-weight: 700; font-size: 13.5px; color: var(--text-primary);
+  line-height: 1.3;
+}
+.wb-timing-pill {
+  flex-shrink: 0;
+  font-size: 9.5px; font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--amber-light); color: var(--amber);
+  border: 1px solid var(--amber-mid);
+  border-radius: 4px; padding: 2px 7px;
+  letter-spacing: 0.04em; white-space: nowrap;
+}
+.wb-trigger-section-label {
+  font-size: 9.5px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace; margin-bottom: 4px;
+}
+.wb-trigger-watchfor {
+  font-size: 12.5px; color: var(--text-secondary); line-height: 1.55;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.wb-trigger-script {
+  font-size: 12.5px; color: var(--text-primary); line-height: 1.6;
+  background: var(--fl-blue-light);
+  border-left: 3px solid var(--fl-blue);
+  padding: 8px 12px;
+  border-radius: 0 6px 6px 0;
+  font-style: italic;
+}
+
+.wb-advisor-box {
+  background: linear-gradient(135deg, var(--fl-blue-light), white);
+  border: 1px solid var(--fl-blue-mid);
+  border-left: 4px solid var(--fl-blue);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 12px;
+}
+.wb-advisor-label {
+  font-size: 10px; font-weight: 800; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--fl-blue);
+  font-family: 'JetBrains Mono', monospace; margin-bottom: 10px;
+}
+.wb-advisor-text {
+  font-size: 14px; line-height: 1.75; color: var(--text-primary);
+}
+.wb-advisor-text strong { color: var(--fl-blue); }
+
+.wb-testimonial-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;
+}
+.wb-testimonial-card {
+  background: var(--surface);
+  border: 1.5px dashed var(--border-strong);
+  border-radius: var(--radius);
+  padding: 16px;
+  position: relative;
+}
+.wb-testimonial-card.filled {
+  border-style: solid;
+  border-color: var(--green-mid);
+  background: var(--green-light);
+}
+.wb-t-status {
+  font-size: 9px; font-weight: 800; letter-spacing: 0.12em;
+  text-transform: uppercase; font-family: 'JetBrains Mono', monospace;
+  padding: 2px 7px; border-radius: 3px; display: inline-block;
+  margin-bottom: 8px;
+}
+.wb-t-status.needs { background: var(--amber-light); color: var(--amber); }
+.wb-t-status.ready { background: var(--green-light); color: var(--green); border: 1px solid var(--green-mid); }
+.wb-t-trigger-tag {
+  font-size: 10px; font-weight: 700; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  font-family: 'JetBrains Mono', monospace; margin-bottom: 6px;
+}
+.wb-t-quote {
+  font-size: 12.5px; line-height: 1.6; color: var(--text-secondary);
+  font-style: italic;
+}
+.wb-t-quote.placeholder { color: var(--text-muted); }
+.wb-t-usage {
+  font-size: 11px; color: var(--fl-blue); margin-top: 8px; font-weight: 600;
+}
+
+/* ── ANIMATIONS ──────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity:0; } to { opacity:1; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <svg width="148" height="32" viewBox="0 0 148 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Frontline Education">
+      <path d="M14 2C14 2 6 4.5 6 12V20.5C6 25 9.5 28.5 14 30C18.5 28.5 22 25 22 20.5V12C22 4.5 14 2 14 2Z" fill="#1B4F8A"/>
+      <rect x="10" y="9" width="8" height="2" rx="0.5" fill="white"/>
+      <rect x="10" y="13" width="6" height="2" rx="0.5" fill="white"/>
+      <rect x="10" y="9" width="2" height="12" rx="0.5" fill="white"/>
+      <text x="28" y="21" font-family="Georgia, serif" font-weight="700" font-size="16" fill="#1B4F8A" letter-spacing="-0.3">Frontline</text>
+    </svg>
+    <span class="logo-sep">|</span>
+    <span class="logo-product">MCI · Market Competitive Intelligence</span>
+  </div>
+  <div class="header-meta">
+    <div class="status-pill">INTEL LIVE</div>
+    <div class="demo-pill">STAKEHOLDER DEMO</div>
+  </div>
+</header>
+
+<div class="app">
+  <aside>
+    <div class="sidebar-section-label">Absence & Sub Management</div>
+
+    <button class="comp-card active" onclick="selectComp('redrover', this)">
+      <div class="comp-card-top">
+        <span class="comp-card-name">Red Rover</span>
+        <span class="threat-badge threat-high">HIGH</span>
+      </div>
+      <div class="comp-card-sub">Absence · Sub Management · All HCM</div>
+    </button>
+
+    <button class="comp-card" onclick="selectComp('subcentral', this)">
+      <div class="comp-card-top">
+        <span class="comp-card-name">Sub Central</span>
+        <span class="threat-badge threat-med">MED</span>
+      </div>
+      <div class="comp-card-sub">Absence · Sub Fill</div>
+    </button>
+
+    <div class="sidebar-section-label">Full Platform</div>
+
+    <button class="comp-card" onclick="selectComp('powerschool', this)">
+      <div class="comp-card-top">
+        <span class="comp-card-name">PowerSchool</span>
+        <span class="threat-badge threat-high">HIGH</span>
+      </div>
+      <div class="comp-card-sub">Unified Talent · All HCM Segments</div>
+    </button>
+
+    <div class="sidebar-section-label">Point Solutions</div>
+
+    <button class="comp-card" onclick="selectComp('applitrack', this)">
+      <div class="comp-card-top">
+        <span class="comp-card-name">Hire+ (AppliTrack)</span>
+        <span class="threat-badge threat-med">MED</span>
+      </div>
+      <div class="comp-card-sub">Talent Acquisition · ATS · All Hiring</div>
+    </button>
+
+    <button class="comp-card" onclick="selectComp('tcp', this)">
+      <div class="comp-card-top">
+        <span class="comp-card-name">TimeClockPlus</span>
+        <span class="threat-badge threat-med">MED</span>
+      </div>
+      <div class="comp-card-sub">Time & Attendance · Red Rover Partner</div>
+    </button>
+
+    <button class="comp-card" onclick="selectComp('kickup', this)">
+      <div class="comp-card-top">
+        <span class="comp-card-name">KickUp</span>
+        <span class="threat-badge threat-med">MED</span>
+      </div>
+      <div class="comp-card-sub">Professional Growth · PD Platform</div>
+    </button>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-info">
+      <strong>⚡ MCI Answers</strong>
+      Ask any competitive question in the MCI Answers tab and get an instant, market-ready response.
+    </div>
+  </aside>
+
+  <main id="main"></main>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════
+// COMPETITOR INTELLIGENCE DATA
+// ═══════════════════════════════════════════════════════════════════
+
+const DATA = {
+
+// ── RED ROVER ──────────────────────────────────────────────────────
+redrover: {
+  name: "Red Rover",
+  tagline: "Absence & Substitute Management · Mobile-First · All HCM Segments",
+  threat: "HIGH", threat_class: "threat-high",
+  updated: "Feb 2026",
+  sources: "Website · G2 · LinkedIn · App Store · Competitive Intel Summary Feb 2026",
+  stats: [
+    { value:"1,700+", label:"Districts (45 States)", color:"var(--red)" },
+    { value:"4.1★",   label:"G2 Rating",             color:"var(--amber)" },
+    { value:"~25%",   label:"Absence Mkt Share",      color:"var(--red)" },
+    { value:"PRIVATE",label:"Ownership",              color:"var(--text-muted)" },
+  ],
+  summary: "Red Rover has grown from a sub-500 district niche player to 1,700+ districts across 45 states — the fastest growth in K-12 HCM. They now compete across all HCM segments, and their strategic partnership with TimeClockPlus has closed their time & attendance gap. Red Rover's 13-second average support response time and weekly feature update cadence are resonating with districts frustrated by Frontline's fragmented UX and slower release cycle. Structural weaknesses persist: no payroll connectivity, no full HCM suite path, and shallow CBA configurability. Corona-Norco USD switching away from Frontline in July 2025 is their most prominent public win — expect them to weaponize that reference aggressively.",
+  strengths: [
+    { text:"Native iOS/Android app with 4.6★ rating — substitutes and coordinators love the UX; demos extremely well against Frontline's fragmented interface", conf:"high" },
+    { text:"13-second average support response time — an explicit selling point they now use against Frontline in every deal", conf:"high" },
+    { text:"Aggressive pricing — typically 25-35% below Frontline Absence standalone; willing to do multi-year discounts to win logos", conf:"high" },
+    { text:"TimeClockPlus (TCP) partnership closes the T&A gap — now offering a bundled absence + time-clock solution for small-to-mid districts without needing Frontline", conf:"high" },
+    { text:"Weekly feature update cadence — they publicly publish a changelog and use release speed as a proof point against Frontline's slower release cycle", conf:"med" },
+    { text:"Fast implementation — districts report 30-45 days to go-live; strong onboarding team; Corona-Norco USD (July 2025) is their marquee reference win from Frontline", conf:"high" },
+  ],
+  weaknesses: [
+    { text:"No native payroll integration — absence data must be exported manually or via CSV; creates reconciliation burden even with TCP partnership in place", conf:"high" },
+    { text:"No onboarding, recruiting, or performance modules — their HCM suite ambitions are limited; TCP partnership fills T&A but doesn't connect to the full staff lifecycle", conf:"high" },
+    { text:"CBA (collective bargaining agreement) configurability is limited — districts with complex union rules frequently hit walls; Red Rover reference districts skew non-union", conf:"high" },
+    { text:"No KickUp-equivalent PD integration — professional growth remains a gap; their Learning Forward partnership (via KickUp) is early and coaching-focused only", conf:"med" },
+    { text:"No workforce analytics beyond basic absence reporting — no predictive fill, trend analysis, or workforce planning insights", conf:"high" },
+    { text:"Rapid growth straining operations — 13-second support claim may not scale as they pass 2,000+ districts", conf:"low" },
+  ],
+  positioning: [
+    { text:"'Modern absence management built for the way educators work today' — leads with UX and speed against Frontline's legacy Aesop reputation", conf:"high" },
+    { text:"Explicitly targets Frontline/Aesop as displacement target — sales decks reference 'legacy Aesop'; Corona-Norco USD win (July 2025) is their marquee proof point", conf:"high" },
+    { text:"'13-second support, weekly features, transparent pricing' — using service quality and transparency as a three-pillar differentiator in every competitive deal", conf:"high" },
+    { text:"Now pitching 'complete HCM without the complexity' via TCP partnership — broadening their story beyond absence-only for the first time", conf:"med" },
+  ],
+  traps: [
+    {
+      q: '"How does your absence data connect to payroll at the end of each pay period?"',
+      why: "Red Rover has <strong>no native payroll integration</strong>. The answer will be 'we export a CSV' or they'll describe a manual process. This exposes reconciliation labor that offsets their price advantage — and opens the door to Frontline's direct payroll connections."
+    },
+    {
+      q: '"Walk me through how your system handles a teacher on intermittent FMLA with union step-placement rules."',
+      why: "Red Rover's CBA logic is shallow. Complex leave scenarios with union rules, FMLA tracking, and step-based sub pay rates <strong>quickly exceed their configurability</strong>. Most districts with active bargaining units will immediately see the gap."
+    },
+    {
+      q: '"Can you show us what happens when a sub declines a job — how does the system re-offer and track pool health over time?"',
+      why: "Frontline's sub pool analytics and fill optimization are significantly deeper. Red Rover can show basic fill sequences but <strong>lacks predictive pool health</strong> and decline-pattern analysis."
+    },
+    {
+      q: '"How would our HR team pull a report showing absence trends by building, absence reason, and FTE impact — without involving IT?"',
+      why: "Red Rover's reporting is basic. Self-serve analytics for HR directors is limited to pre-built reports. <strong>Frontline's analytics layer</strong> handles ad-hoc queries, trend visualization, and export to BI tools without IT involvement."
+    },
+    {
+      q: '"When a substitute completes an assignment, how does that automatically update their W-2 hours for your payroll vendor?"',
+      why: "It doesn't — not automatically. This question forces them to describe the <strong>manual reconciliation step</strong> that districts underestimate in their TCO calculation."
+    },
+  ],
+  talking_points: [
+    {
+      headline: "Red Rover is a feature, not a platform.",
+      body: "A great mobile app for subs is table stakes. What happens when your HR director needs absence data in your payroll system tonight? Or when you want to see which buildings have the worst absence rates and why? Frontline connects absence to the full staff lifecycle — Red Rover stops at the fill."
+    },
+    {
+      headline: "Price difference disappears when you calculate reconciliation hours.",
+      body: "Districts on Red Rover report spending 6-10 hours per pay period manually reconciling absence data with payroll. At a $35/hr admin rate, that's $10K-18K annually — often exceeding the cost difference. We help districts calculate this in our TCO workshop before they sign anything."
+    },
+    {
+      headline: "Frontline grows with you. Red Rover doesn't.",
+      body: "In 3 years, when your district wants integrated recruiting, onboarding, and professional development, Red Rover has no answer. Frontline's HCM suite means your absence data is already connected to hiring pipelines, onboarding checklists, and PD requirements — no re-implementation required."
+    },
+    {
+      headline: "Our mobile app is rated 4.5★ too — and it connects to everything.",
+      body: "Don't let them win the mobile demo by default. Frontline's sub app has push notifications, one-tap job acceptance, and the same clean UX — plus it connects to their payroll, their HR file, and their onboarding documents. Ask to put them side by side."
+    },
+    {
+      headline: "References: ask specifically about complex CBA districts.",
+      body: "Red Rover's reference districts tend to be smaller and non-union. Ask them for a reference from a district with a complex bargaining agreement and a 3,000+ sub pool. The references rarely exist — and that silence is the answer."
+    },
+  ],
+  battlecard: {
+    their_strengths: [
+      "Mobile app demos beautifully — 4.6★ rated",
+      "Price: 25-35% lower than Frontline Absence standalone",
+      "Speed: 30-45 day implementation",
+      "Simple, clean UX — low training resistance",
+    ],
+    our_wins: [
+      "Full payroll integration — no manual reconciliation",
+      "CBA/union rules configurability for complex contracts",
+      "Advanced analytics — predictive fill, pool health, trend reporting",
+      "Path to full HCM suite — one platform for full staff lifecycle",
+      "Larger district track record and enterprise support model",
+    ],
+    position: [
+      "Frontline is the only absence platform purpose-built for K-12 that connects to the full staff lifecycle — from recruiting through retirement.",
+      "Red Rover is an excellent point solution for simple absence needs. Frontline is the answer for districts that want their HR data to work together.",
+      "Our TCO is often equivalent or lower when payroll reconciliation, re-implementation costs, and integration fees are included.",
+    ]
+  },
+  moves: [
+    { date:"JUL 2025", type:"threat", icon:"⚠️", title:"Corona-Norco USD Switches from Frontline to Red Rover", desc:"One of the most visible Frontline-to-Red Rover conversions on record. Corona-Norco USD cited UX, mobile experience, and support responsiveness as primary drivers. Red Rover is actively using this as a reference in every competitive deal — know this story before you walk into any Southern California district." },
+    { date:"2025", type:"threat", icon:"⚠️", title:"TCP Partnership Closes T&A Gap", desc:"Red Rover + TimeClockPlus bundled solution now directly competes against Frontline Absence & Time in the small-to-mid market. Districts that previously needed Frontline for both absence AND time clock now have a credible alternative. Changes the TCO conversation." },
+    { date:"2025", type:"threat", icon:"🎯", title:"Competing Across All HCM Segments", desc:"Competitive Intel Summary (Feb 2026) now lists Red Rover as a threat across ALL HCM segments — not just absence. Their Learning Forward coaching partnership (via KickUp integration) and TCP bundle represent systematic suite expansion." },
+    { date:"FEB 2024", type:"threat", icon:"⚠️", title:"Launched 'Red Rover Analytics 2.0'", desc:"New reporting dashboard with trend charts and building-level comparisons. Partially closes the analytics gap — but still no ad-hoc querying or payroll-connected reporting." },
+    { date:"JAN 2024", type:"threat", icon:"🎯", title:"Hired VP of Enterprise Sales from Frontline", desc:"Direct competitive signal — building an enterprise motion to target 5K+ student districts. Now in 45 states and adding enterprise references." },
+  ],
+  suggested_qs: [
+    "How do we handle a prospect who says Red Rover is cheaper?",
+    "Red Rover now claims all HCM — how do we respond?",
+    "How do we counter the TCP + Red Rover bundle pitch?",
+    "How do we discuss the Corona-Norco USD loss without sounding defensive?",
+    "What's our best one-liner to differentiate from Red Rover?",
+    "How do we counter Red Rover's 13-second support response claim?",
+    "A prospect tried Red Rover and is back in market — how do we approach?",
+  ],
+  qa: {
+    "How do we handle a prospect who says Red Rover is cheaper?":
+      `Validate the number, then reframe the comparison.<br><br><strong>Step 1:</strong> Agree — "You're right, Red Rover's license fee is lower for absence-only."<br><br><strong>Step 2:</strong> Introduce TCO. <em>Ask: "How many hours per pay period does your team spend reconciling absence data with payroll today? And how many hours after you switch to Red Rover?" The TCP partnership doesn't change this — Red Rover still has no native payroll integration. At 8 hours/cycle × 24 pay periods × $35/hr = $6,720/year in hidden labor cost — often wiping out the savings.</em><br><br><strong>Step 3:</strong> Future-proof the conversation. "In 3 years when you want integrated recruiting or PD tracking, what does the Red Rover upgrade path look like?" A TCP bundle isn't a platform. Frontline's total cost when you include future integrations is almost always lower.`,
+
+    "Red Rover now claims all HCM — how do we respond?":
+      `Acknowledge the ambition, then test the depth.<br><br>"Red Rover has made real progress — the TCP partnership fills a time-clock gap, and their Learning Forward coaching tie-in is a start on PD. But 'all HCM' requires something they still don't have: <strong>a connected data model</strong>. Ask to see how a new hire flows from recruiting into onboarding into their time clock and payroll. With Red Rover + TCP, that's three systems, three logins, and manual handoffs at every seam."<br><br><em>Then offer the contrast: Frontline built its platform on a connected data architecture. Recruiting flows into Central (onboarding), which flows into Absence & Time, which connects to payroll. That's not a partnership — that's a platform.</em>`,
+
+    "How do we counter the TCP + Red Rover bundle pitch?":
+      `Three moves:<br><br><strong>1. Expose the seams.</strong> "A bundle is not an integration. Ask Red Rover to show how a substitute's hours in TCP automatically update their W-2 record and flow into your payroll run — end to end, no CSV. They can't."<br><br><strong>2. Challenge the CBA story.</strong> Red Rover's CBA configurability gaps don't go away because TCP is attached. For districts with complex union rules — step placement, extra duty pay, leave accrual — the combined solution hits the same walls.<br><br><em>3. TCO the bundle honestly. Red Rover + TCP typically results in two vendor contracts, two support channels, and two implementation timelines. Frontline is one contract, one CSM, one platform.</em>`,
+
+    "How do we discuss the Corona-Norco USD loss without sounding defensive?":
+      `Own it, contextualize it, redirect.<br><br>"Corona-Norco is a real win for Red Rover — we're not dismissing it. They wanted a faster, lighter experience for a specific use case and Red Rover delivered that. What I'd want to know for your district is: what does Corona-Norco do when they want payroll integration, complex CBA rules, or full HCM analytics?"<br><br><em>Then pivot: "The districts that have come back to Frontline from Red Rover came back when they hit the walls: payroll reconciliation pain, CBA configurability limits, and the realization they'd need to start over to get a full HCM suite. We can connect you with those references directly."</em>`,
+
+    "What's our best one-liner to differentiate from Red Rover?":
+      `<strong>"Red Rover fills the sub spot. Frontline manages the person."</strong><br><br>It's short, memorable, and positions at the right level. Follow it with: "Red Rover is excellent at the transaction — job posted, sub filled, done. Frontline is about what happens before and after that transaction: who's in your sub pool, why absences are trending up in Building 4, how this connects to your payroll run, and what you're doing to retain the staff who are absent too often." It reframes the comparison from UI to strategy.`,
+
+    "How do we counter Red Rover's 13-second support response claim?":
+      `Validate it, then reframe what support means.<br><br>"A 13-second response time sounds great — and for simple questions, it is. But let's talk about what happens when you have a complex CBA configuration issue, a payroll integration problem, or a custom reporting request. Those aren't chat-window questions."<br><br><em>Then offer Frontline's model: "Frontline provides a dedicated named Customer Success Manager — someone who knows your district, your contract, your bargaining agreement. When something complex breaks, you want an expert who knows your setup, not a fast response from someone starting from zero."</em>`,
+
+    "A prospect tried Red Rover and is back in market — how do we approach?":
+      `This is a gift — treat it like one, carefully.<br><br><strong>The golden rule: never say "we told you so."</strong> The rep who wins this deal is the one who makes the district feel validated, not embarrassed.<br><br><strong>Step 1 — lead with curiosity, not a pitch.</strong> "Tell me about your experience. What was working, and where did things start to get complicated?" Let them name the pain. The most common answers: payroll reconciliation hours, CBA configuration hitting walls, complexity they couldn't grow into, or a new HR director who wanted more than Red Rover could offer.<br><br><em>Step 2 — validate their original decision.</em> "Red Rover was actually the right call for what you needed at the time — they're excellent at fast, clean absence management for straightforward use cases. The question now is what you need for the next 3 years."<br><br><strong>Step 3 — show what changed, not just what you offer.</strong> Pull up the win-back signals tab and walk through which trigger applied to them. Then connect to specifically how Frontline solves that trigger — not generically, but for their district size, CBA complexity, and suite ambitions.<br><br><em>Step 4 — offer the reference proactively.</em> "We have several districts who made a similar journey and came back. Would it be useful to speak with one?" A peer reference from a district who left and returned is more powerful than any rep talking point.</em>`,
+  },
+  winback: {
+    intro: "These are the four patterns that most reliably predict when a Red Rover district is ready to evaluate returning to Frontline. Each includes what to watch for, when it tends to surface, and the exact framing to use as a trusted advisor — not a salesperson who was waiting for them to fail.",
+    triggers: [
+      {
+        signal: "Payroll Reconciliation Hits a Wall",
+        timing: "6–18 MONTHS POST GO-LIVE",
+        watchfor: "Payroll team is complaining about manual CSV exports at every pay period close. HR director mentions 'hours we didn't expect' or 'our business office is frustrated.' Finance director flags the reconciliation process during a budget review. Substitutes' hours are frequently miscounted, leading to payroll corrections.",
+        script: "\"We've seen this come up a lot with districts that made a similar switch. The license fee looks right at signing — but the reconciliation labor that shows up every pay period is rarely in the original calculation. Want me to walk through what that typically looks like for a district your size?\""
+      },
+      {
+        signal: "CBA Renewal Exposes Configurability Limits",
+        timing: "AT CONTRACT RENEWAL / BARGAINING",
+        watchfor: "District recently negotiated a new collective bargaining agreement with new step-placement rules, leave accrual changes, or extra duty pay structures. HR is trying to configure new rules into Red Rover and hitting dead ends. Union reps are pushing back on tracking accuracy. Substitute pay rates are being calculated manually outside the system.",
+        script: "\"Union contract changes are exactly where we see complexity surface that wasn't visible at the original purchase decision. What does your new agreement include on substitute step placement? I want to understand where the configuration request is stalling.\""
+      },
+      {
+        signal: "Growth Outpaces the Product",
+        timing: "YEAR 2–3 / AFTER EXPANSION",
+        watchfor: "District has opened new schools or grown past ~3,000 students since go-live. They're trying to manage a larger sub pool than Red Rover's analytics can support. HR is asking for building-level trend reporting that doesn't exist. New HR Director or Superintendent was hired and is asking 'why can't we see X' for the first time.",
+        script: "\"Districts often make the right decision for their size at the time. What we hear from districts that have grown is that the analytics ceiling tends to surface first — the questions leadership is asking just can't be answered. What's your leadership asking for that you can't pull today?\""
+      },
+      {
+        signal: "Suite Ambition Exceeds Point Solution",
+        timing: "YEAR 2+ / BUDGET PLANNING CYCLE",
+        watchfor: "District is starting to talk about adding recruiting, onboarding, or professional development — and realizing Red Rover has no path to those. IT director is frustrated by the number of disconnected systems. New strategic plan mentions 'integrated HR.' Board is asking about staff lifecycle data that requires cross-system reporting.",
+        script: "\"When a district starts asking 'what would it look like to have all of this connected,' that's usually the signal that the point solution has done its job — and the next question is what the platform strategy looks like. What's on the HR roadmap for the next 2-3 years?\""
+      },
+      {
+        signal: "New Leader Inherited the Problem",
+        timing: "ANY TIME — LEADERSHIP TRANSITION",
+        watchfor: "New HR Director, Superintendent, or CFO joined in the past 6–12 months. They're doing a vendor audit or system review. They've never had a direct relationship with Frontline and have no loyalty to the prior decision. They're asking 'why do we have this?' rather than defending it.",
+        script: "\"New leaders often inherit vendor decisions they weren't part of. The most valuable thing I can do is give you an honest picture of what districts your size and complexity are using and why — so you can make the right call for your team, not just continue what was there.\""
+      }
+    ],
+    advisor_framing: "The tone that wins these conversations isn't 'we knew Red Rover wouldn't work.' It's 'we understand why you made that decision, and we want to make sure you have everything you need to make the right call now.' Districts that left and came back are not failures — they're districts that grew into needing more. Treat them that way and the reference story writes itself.",
+    testimonials: [
+      {
+        status: "needs",
+        trigger: "Payroll Reconciliation",
+        quote: "PLACEHOLDER — Seeking district testimony on reconciliation hours post-Red Rover. Target: mid-size district, 2–4K students, returned within 18 months citing payroll burden.",
+        usage: "Use in proposals and discovery calls when finance director is in the room"
+      },
+      {
+        status: "needs",
+        trigger: "CBA Complexity",
+        quote: "PLACEHOLDER — Seeking district testimony on union configuration limits in Red Rover. Target: district with active bargaining unit and step-based sub pay.",
+        usage: "Use with HR Directors in unionized districts evaluating Red Rover"
+      },
+      {
+        status: "needs",
+        trigger: "Growth / Suite Expansion",
+        quote: "PLACEHOLDER — Seeking district testimony on suite limitation discovery. Target: district that started small, grew, and needed the full HCM platform path.",
+        usage: "Use in strategic planning conversations with Superintendents and HR Directors"
+      }
+    ]
+  }
+},
+
+// ── POWERSCHOOL ────────────────────────────────────────────────────
+powerschool: {
+  name: "PowerSchool",
+  tagline: "Unified Talent · Full K-12 HCM Suite · Leading Competitor Across All FL Pillars",
+  threat: "HIGH", threat_class: "threat-high",
+  updated: "Feb 2026",
+  sources: "Website · G2 · Press Releases · LinkedIn · Competitive Intel Summary Feb 2026",
+  stats: [
+    { value:"15K+",   label:"Districts",         color:"var(--red)" },
+    { value:"3.8★",   label:"G2 Rating",         color:"var(--amber)" },
+    { value:"$5.6B",  label:"Bain Acq. (2024)",  color:"var(--text-primary)" },
+    { value:"PRIVATE",label:"Bain Capital PE",   color:"var(--text-muted)" },
+  ],
+  summary: "PowerSchool is Frontline's most comprehensive competitive threat — the only competitor that competes across ALL Frontline pillars and segments simultaneously. Taken private by Bain Capital in 2024 for ~$5.6 billion, PowerSchool is well-capitalized and pursuing aggressive growth. Their 'one platform' pitch (SIS + HCM + ERP + Analytics) resonates strongly with IT-stretched administrators and CFOs who want consolidated vendors. Their nationwide footprint, stronger state selling motion, and lower price point for most districts are real advantages. Frontline wins on A&T reporting depth, enhanced R&H configurability, Proactive Recruitment, and the deepest pool of K-12 clients and job seekers. Win strategy: separate the HR buyer from the IT buyer, attack their integration reality vs. their integration narrative, and lead with Frontline's purpose-built K-12 HR depth.",
+  strengths: [
+    { text:"Nationwide footprint across ALL Frontline pillars — SIS, HCM, ERP, Analytics, PD; the only competitor that can replace Frontline everywhere", conf:"high" },
+    { text:"Strong state selling motion — better integration with state reporting infrastructure in many states; Bain Capital backing ($5.6B) enables aggressive investment", conf:"high" },
+    { text:"Lower price point for most districts — consistently undercutting Frontline on initial license price across HCM modules", conf:"high" },
+    { text:"'One vendor' narrative resonates with CFOs and IT directors — PowerSchool Copilot AI adds AI-forward talking point in demos", conf:"high" },
+    { text:"SchoolSpring job board + ATS combination — strong recruiting footprint; SchoolSpring is the largest K-12 job board (though K12JobSpot has 1.7M seekers vs. SchoolSpring)", conf:"med" },
+  ],
+  weaknesses: [
+    { text:"G2 support scores fell from 4.1 to 3.8 in 90 days after 600 CS reps were laid off in Q3 2023", conf:"high" },
+    { text:"Unified Talent HR product is a stitched-together acquisition — SIS and HCM do not share a real-time data model", conf:"high" },
+    { text:"Renewal pricing up 30-40% post-Vista Equity acquisition — actively triggering competitive reviews in mid-market", conf:"high" },
+    { text:"Full-suite implementation averaging 14+ months — districts frequently miss go-live commitments", conf:"med" },
+    { text:"Copilot AI is limited to SIS data — cannot surface HR, absence, or compensation insights", conf:"high" },
+  ],
+  positioning: [
+    { text:"'One platform for the whole district' — unified data across student, staff, finance, and learning", conf:"high" },
+    { text:"AI-forward since Q3 2023 — 'data-driven decisions at every level' targeting superintendent/board", conf:"high" },
+    { text:"Enterprise motion intensifying — new CRO from Workday signals move upmarket into larger districts", conf:"med" },
+  ],
+  traps: [
+    {
+      q: '"Can you show us how HR data updates in real time when a student record changes — like a teacher\'s class assignment shift?"',
+      why: "Their SIS-to-HCM integration is <strong>event-based with a 24-hour data sync delay</strong>. Real-time bidirectional data is a marketing claim, not a technical reality. This question exposes the seam between their two acquired products."
+    },
+    {
+      q: '"Can you provide a reference from a district that went full Unified Talent suite — SIS, HR, Finance — in the last 18 months and was live on all modules within 12 months?"',
+      why: "Very few such references exist. Full-suite successful implementations under 12 months are rare. The <strong>absence of credible references</strong> speaks volumes."
+    },
+    {
+      q: '"What are your renewal pricing commitments — do you have price caps in your contract language?"',
+      why: "PowerSchool's PE ownership means aggressive renewal pricing. Asking about <strong>contract price protections</strong> surfaces the risk — and lets Frontline offer multi-year pricing locks as a differentiator."
+    },
+    {
+      q: '"What can your Copilot AI answer about staff HR data — like turnover risk or absence trends?"',
+      why: "Copilot is trained on SIS data. It <strong>cannot answer HR questions</strong>. This is Frontline's AI differentiation moment — our MCI intelligence layer covers the staff side they can't touch."
+    },
+  ],
+  talking_points: [
+    {
+      headline: "The 'one platform' story is a roadmap, not a reality.",
+      body: "PowerSchool acquired their HR product. The SIS and Unified Talent don't share a live data model — there's a 24-hour sync delay between student data and HR records. Frontline's HCM was purpose-built for K-12 staff from day one. That's not an integration — that's architecture."
+    },
+    {
+      headline: "Their AI can't see your staff data. Ours can.",
+      body: "PowerSchool Copilot is SIS-only — it can tell you about students, not staff. Frontline's intelligence layer surfaces absence trends, turnover risk, and compensation benchmarking for your HR team. When your superintendent asks 'why is our sub fill rate declining,' we can answer. Copilot can't."
+    },
+    {
+      headline: "A 30-40% price increase at renewal is not a partnership.",
+      body: "Districts renewing with PowerSchool post-Vista acquisition are seeing 30-40% increases. We offer multi-year pricing locks and transparent renewal terms. Ask your PowerSchool rep to put a price cap in writing — and watch what happens."
+    },
+  ],
+  battlecard: {
+    their_strengths: [
+      "SIS installed base — cross-sell leverage",
+      "'One vendor' narrative with CFOs and IT",
+      "PowerSchool Copilot AI — early mover narrative",
+      "Brand recognition across K-12",
+    ],
+    our_wins: [
+      "Purpose-built K-12 HCM — not an acquisition",
+      "Real-time HR data, not 24-hr SIS sync delay",
+      "Superior support model — dedicated team, not shared queue",
+      "Price stability — no PE-driven renewal spikes",
+      "Staff-side AI intelligence they can't match",
+    ],
+    position: [
+      "Frontline is the K-12 HCM specialist. PowerSchool is a student data company trying to do HR.",
+      "When they say 'one platform,' ask to see one real-time HR data flow between SIS and Unified Talent. Then decide.",
+      "The safest long-term HCM decision is the one built for staff data from the ground up.",
+    ]
+  },
+  moves: [
+    { date:"2024", type:"threat", icon:"⚠️", title:"Taken Private by Bain Capital — $5.6B", desc:"PowerSchool delisted from NASDAQ and taken private by Bain Capital for ~$5.6B in 2024. This is not a retrenchment — it's a bet on aggressive growth. Expect accelerated product investment, M&A, and more sophisticated competitive tactics across all Frontline segments." },
+    { date:"2025", type:"threat", icon:"⚠️", title:"Competing Across All Frontline Pillars", desc:"Feb 2026 Competitive Intel Summary explicitly flags PowerSchool as the leading competitor across ALL Frontline pillars and all segments — HCM, Student, Business, and Data & Analytics. No other single competitor covers this breadth." },
+    { date:"JAN 2024", type:"threat", icon:"⚠️", title:"PowerSchool Copilot AI Expanded", desc:"AI assistant now widely deployed. Limited to SIS data — cannot surface HR insights — but sales teams are using it aggressively in demos. Frontline's AI response (Dear Future initiative, K-12 AI Advisory Council) launched August 2025." },
+    { date:"NOV 2023", type:"opportunity", icon:"✅", title:"Renewal Pricing Spike Confirmed", desc:"AE team confirmed 30-40% renewal increases via multiple customer advisory board sources. Actively triggering RFPs — warmest competitive pipeline signal. Bain ownership may intensify pricing pressure further." },
+    { date:"SEP 2023", type:"opportunity", icon:"✅", title:"600 CS Layoffs — Support Scores Collapsed", desc:"G2 rating dropped from 4.1 to 3.8 in 90 days. Support ticket response time grew from 4hrs to 2+ days. Lead with Frontline's dedicated CSM model — and Frontline's new Chief Customer Officer (April 2025) signals investment in this advantage." },
+  ],
+  suggested_qs: [
+    "How do we beat PowerSchool when they're already the SIS vendor?",
+    "What's our answer to the PowerSchool Copilot AI pitch?",
+    "How do we handle the 'one vendor' objection?",
+    "Which PowerSchool districts are vulnerable to churn this year?",
+    "What's the fastest way to disqualify PowerSchool in a deal?",
+    "How do we position our support model against theirs?",
+  ],
+  qa: {
+    "How do we beat PowerSchool when they're already the SIS vendor?":
+      `Being the SIS vendor is leverage, not a lock. Here's the play:<br><br><strong>Reframe the job to be done.</strong> "PowerSchool manages your students. Who manages your staff?" The HR buyer — HR Director, Superintendent of HR — often has no loyalty to the SIS vendor and deeply cares about HCM quality.<br><br><em>Find the HR champion who is separate from IT. IT wants one vendor. HR wants the best HR tool. These are different buyers with different priorities.</em><br><br><strong>Then use their integration narrative against them.</strong> Ask PowerSchool to demo a real-time HR data flow from SIS to Unified Talent. The 24-hour sync delay will surface. Then show Frontline's live HR data architecture. The "integration" story collapses under scrutiny.`,
+
+    "What's our answer to the PowerSchool Copilot AI pitch?":
+      `Three moves:<br><br><strong>1. Acknowledge and narrow it.</strong> "Copilot is interesting — what HR questions can it answer?" The answer is: almost none. It's SIS-trained. It can't surface absence trends, turnover risk, or compensation benchmarks for staff.<br><br><strong>2. Pivot to the staff AI story.</strong> <em>Frontline's MCI intelligence layer is built for the staff side — the data that HR directors and superintendents actually need to make decisions. When they ask "why is our fill rate down," we can answer. Copilot can't.</em><br><br><strong>3. Plant the governance question.</strong> "What staff data is going into Copilot's training? How are you protecting employee privacy?" This is a real concern with HR AI — and Frontline's human-governed approach is a meaningful differentiator.`,
+
+    "How do we handle the 'one vendor' objection?":
+      `Validate the instinct, then reframe the risk.<br><br>"The desire for fewer vendors makes complete sense — we hear that all the time. But here's what districts tell us after they've gone all-in with PowerSchool: they have one contract but two disconnected products. The SIS and HR don't share live data. So they have one invoice but two systems to reconcile."<br><br><em>Then offer the alternative framing: "What if you could have the best student platform AND the best HR platform, with a certified integration between them? That's not two vendors — that's a best-of-breed stack with the reliability of purpose-built tools."</em><br><br>Close with: "If PowerSchool's HR product isn't delivering in year 2, what's your exit? Our integration with every major SIS — including PowerSchool — means you're never locked in."`,
+
+    "Which PowerSchool districts are vulnerable to churn this year?":
+      `Three signals to prioritize:<br><br><em>1. <strong>Renewal cohort:</strong> Districts that signed 3-year deals in 2021-2022 are coming up on renewal right now — into the 30-40% price increase window. Pull this from your SFDC territory.<br>2. <strong>Legacy Haiku HR:</strong> Districts still on the pre-acquisition Haiku HR product have the most integration pain and lowest satisfaction. These are your warmest HCM displacement targets.<br>3. <strong>Support ticket history:</strong> Cross-reference public G2 reviews and LinkedIn complaints for districts in your territory. Recent public complaints are warm outreach opportunities — reach out within 30 days of a negative review.</em>`,
+
+    "What's the fastest way to disqualify PowerSchool in a deal?":
+      `Two rapid disqualification moves:<br><br><strong>The reference ask:</strong> "Can you connect us with a district that went live on the full Unified Talent suite — including HR, absence, and recruiting — within 12 months of signing, and is still happy 18 months in?" Very few such references exist. A long pause or a pivot is disqualifying.<br><br><strong>The pricing ask:</strong> "Can you include multi-year price caps in the contract language?" Their PE ownership makes this nearly impossible to guarantee. Frontline offers this routinely. Put both asks in writing before the demo — it changes the entire conversation.`,
+
+    "How do we position our support model against theirs?":
+      `Lead with specifics, not generalities.<br><br>"PowerSchool laid off 600 customer success reps in September 2023. Their G2 support score dropped from 4.1 to 3.8 in 90 days. Current reviews cite 2-5 day response times for non-critical issues."<br><br><em>Then offer the contrast: Frontline provides a dedicated implementation consultant, a named Customer Success Manager, and committed SLA response times in the contract. Ask: "What does your PowerSchool contract say about support response SLAs?" They rarely have them. Ours do.</em>`,
+  }
+},
+
+// ── SUB CENTRAL ────────────────────────────────────────────────────
+subcentral: {
+  name: "Sub Central",
+  tagline: "Absence & Substitute Management",
+  threat: "MEDIUM", threat_class: "threat-med",
+  updated: "10 hours ago",
+  sources: "Website · G2 · News",
+  stats: [
+    { value:"800+",  label:"Districts",       color:"var(--text-primary)" },
+    { value:"3.4★",  label:"G2 Rating",       color:"var(--red)" },
+    { value:"~15%",  label:"Absence Mkt",     color:"var(--amber)" },
+    { value:"PRIVATE",label:"Ownership",      color:"var(--text-muted)" },
+  ],
+  summary: "Sub Central competes directly on absence and substitute management. They're losing ground to both Frontline and Red Rover — their product has stagnated (no major release in 18 months), their mobile experience is web-based rather than native, and their support team is thin. The main displacement opportunity is districts currently on Sub Central who are hitting complexity limits or preparing to expand their HR footprint. They compete primarily on price and incumbent inertia.",
+  strengths: [
+    { text:"Price: typically 20-30% lower than Frontline Absence standalone; willing to negotiate aggressively to retain", conf:"high" },
+    { text:"Fast implementation — districts can be live in 30-60 days; low IT lift", conf:"med" },
+    { text:"Incumbent advantage — some long-tenure districts have deep institutional knowledge of the tool", conf:"high" },
+  ],
+  weaknesses: [
+    { text:"No native mobile app — subs use a mobile-responsive web portal; one-star reviews from substitutes on mobile experience", conf:"high" },
+    { text:"No payroll, benefits, or HR integration — creates manual reconciliation burden every pay period", conf:"high" },
+    { text:"No major product release in 18+ months — feature gap vs. Frontline widening rapidly", conf:"high" },
+    { text:"Small support team — G2 reviews cite 3-5 business day response times as standard", conf:"med" },
+    { text:"No workforce analytics beyond basic fill rate and absence count reporting", conf:"high" },
+  ],
+  positioning: [
+    { text:"Pure-play 'substitute experts' — narrow focus positioning as depth vs. broad platforms", conf:"high" },
+    { text:"Competing on price and speed — minimal services model targets districts that want to self-implement", conf:"high" },
+  ],
+  traps: [
+    {
+      q: '"Can your substitutes accept a job with one tap from their phone — native iOS or Android?"',
+      why: "Sub Central uses a <strong>mobile-responsive web portal</strong>, not a native app. Subs must open a browser, navigate, and log in. Frontline's native app takes one tap. Demo this difference live — it's immediately visible."
+    },
+    {
+      q: '"How does a completed substitute assignment automatically update hours in your payroll system?"',
+      why: "It doesn't — automatically. The answer involves a <strong>manual export or CSV file</strong>. Calculate the reconciliation cost: 6-8 hours/pay period × 24 cycles = 144-192 admin hours annually."
+    },
+    {
+      q: '"Show me your product roadmap for the next 12 months."',
+      why: "Sub Central has not had a major release in 18 months. A <strong>vague or thin roadmap</strong> signals a product in maintenance mode. Contrast with Frontline's published release cadence."
+    },
+  ],
+  talking_points: [
+    {
+      headline: "Sub Central is $X cheaper per year — until you calculate reconciliation.",
+      body: "The license fee looks lower. But when districts calculate the admin hours spent reconciling absence data with payroll manually, the cost difference evaporates. We offer a TCO worksheet that makes this comparison concrete before a budget decision is made."
+    },
+    {
+      headline: "Your substitutes need a native app, not a website.",
+      body: "Sub fill rates improve 15-20% when subs can accept jobs in one tap from a push notification. Sub Central's mobile web portal requires a browser session. In a labor market where you're competing for subs, the app experience matters."
+    },
+    {
+      headline: "Sub Central is a moment-in-time solution. Frontline is a growing platform.",
+      body: "If you're planning to add recruiting, onboarding, or performance management in the next 3 years, Sub Central has no path to connect those workflows. Frontline does."
+    },
+  ],
+  battlecard: {
+    their_strengths: [
+      "Price: 20-30% lower on absence standalone",
+      "Fast implementation — 30-60 days",
+      "Incumbent inertia in long-tenure districts",
+    ],
+    our_wins: [
+      "Native iOS/Android app — 4.5★, one-tap job acceptance",
+      "Payroll integration — automatic, no reconciliation",
+      "Active development cadence — major releases every quarter",
+      "Advanced analytics — predictive fill, absence trends, pool health",
+      "Full HCM suite path — recruiting, onboarding, PD connected",
+    ],
+    position: [
+      "Sub Central fills the spot. Frontline manages the process — from pool health to payroll.",
+      "The mobile experience alone wins most side-by-side evaluations.",
+      "For districts planning HR growth, Frontline is the platform. Sub Central is a point solution.",
+    ]
+  },
+  moves: [
+    { date:"JAN 2024", type:"neutral", icon:"📣", title:"Launched mobile-responsive web portal", desc:"Addressed the biggest complaint — but it's a web app, not native iOS/Android. Partially closes the gap but not competitive with Frontline's native app experience." },
+    { date:"Q3 2023", type:"opportunity", icon:"✅", title:"Lost 4 mid-market districts to Frontline", desc:"4 known conversions (2K-8K students) — all cited mobile app and analytics depth as primary drivers. Strong reference story for similar districts." },
+  ],
+  suggested_qs: [
+    "How do we displace Sub Central when price is the main objection?",
+    "What's the mobile story vs. Sub Central?",
+    "How do we calculate TCO against Sub Central for a proposal?",
+    "What triggers a Sub Central district to start evaluating alternatives?",
+  ],
+  qa: {
+    "How do we displace Sub Central when price is the main objection?":
+      `Two-part answer: TCO and future cost.<br><br><strong>TCO framing:</strong> <em>"Sub Central's license fee is lower. Let's calculate the full cost. How many hours does your team spend reconciling absence data with payroll each pay period? At 8 hours × 24 cycles × $35/hr, that's $6,720/year in hidden admin labor — often exceeding the license cost difference. Frontline automates that reconciliation."</em><br><br><strong>Future cost:</strong> "When you're ready to add recruiting or onboarding, what does Sub Central charge to integrate? Or what does re-implementation cost if you have to switch platforms? Frontline's HCM suite means absence, recruiting, and onboarding are already connected — no integration project required."`,
+
+    "What's the mobile story vs. Sub Central?":
+      `Clean and simple: <strong>native app vs. web portal.</strong><br><br>"Sub Central launched a mobile-responsive website in January — it requires a browser, doesn't send native push notifications, and can't work offline. Frontline has a native iOS and Android app rated 4.5★ with one-tap job acceptance and push notifications."<br><br><em>The demo move: Pull up both side by side on a phone. Have the district coordinator accept a job on Frontline's app — one tap, done. Then have them try it on Sub Central's web portal. The experience speaks for itself. Fill rates improve 15-20% when subs can accept jobs this easily.</em>`,
+
+    "How do we calculate TCO against Sub Central for a proposal?":
+      `Use a four-line TCO calculation:<br><br><em>1. License cost: Sub Central $X vs. Frontline $Y (their advantage, acknowledge it)<br>2. Payroll reconciliation: Hours/pay period × pay periods × admin hourly rate<br>3. IT integration: Cost of connecting Sub Central to payroll/HRIS (usually $5K-15K project)<br>4. Future re-implementation: If they want broader HCM in 3 years, Sub Central = start over; Frontline = already there</em><br><br>We have a TCO worksheet we can run with prospects in a 30-minute workshop. Ask your sales engineer to run it before the proposal goes out — it changes the budget conversation every time.`,
+
+    "What triggers a Sub Central district to start evaluating alternatives?":
+      `Four reliable triggers:<br><br><em>1. <strong>New HR Director hired</strong> — inherits Sub Central, immediately notices the gaps, wants to assess options<br>2. <strong>New CBA negotiated</strong> — new union contract with complex leave or step-pay rules exceeds Sub Central's configurability<br>3. <strong>Payroll complaint</strong> — finance team pushes back on reconciliation hours at pay period close<br>4. <strong>Sub shortage crisis</strong> — district can't fill roles, sub coordinators are frustrated with the fill process</em><br><br>Monitor LinkedIn for job postings for HR Directors in Sub Central districts in your territory — a new HR Director hire is your single best outreach trigger.`,
+  }
+},
+
+// ── HIRE+ (APPLITRACK) ─────────────────────────────────────────────
+applitrack: {
+  name: "Hire+ (formerly AppliTrack)",
+  tagline: "Talent Acquisition · ATS · All Hiring Segments",
+  threat: "MEDIUM", threat_class: "threat-med",
+  updated: "Feb 2026",
+  sources: "Website · G2 · Competitive Intel Summary Feb 2026",
+  stats: [
+    { value:"3K+",    label:"K-12 Districts",      color:"var(--text-primary)" },
+    { value:"3.2★",   label:"G2 Rating",           color:"var(--red)" },
+    { value:"MED",    label:"Threat Level",         color:"var(--amber)" },
+    { value:"PRIVATE",label:"Ownership",            color:"var(--text-muted)" },
+  ],
+  summary: "Hire+ (rebranded from AppliTrack in Q4 2023) competes across all hiring segments against Frontline Recruiting & Hiring. Frontline wins decisively on the depth of the K-12 job seeker pool (K12JobSpot's 1.7M+ registered job seekers), SOC-2 compliance, and Proactive Recruitment capabilities. Their key vulnerability: a visibly dated mobile experience and zero path from ATS to full HCM. The displacement moment is almost always a new HR Director or Superintendent asking 'why is our time-to-hire so high?' — and realizing AppliTrack has no answer.",
+  strengths: [
+    { text:"K-12 specific workflows with incumbency advantage — long-tenure HR admins who know the workarounds protect it", conf:"high" },
+    { text:"Low price point — entry-level ATS for districts with simple, low-volume hiring needs", conf:"high" },
+    { text:"Established presence across all hiring segments — has meaningful district count and name recognition", conf:"med" },
+  ],
+  weaknesses: [
+    { text:"No onboarding, HR, or absence integration — pure ATS creates disconnected candidate-to-employee experience; no path to full HCM suite", conf:"high" },
+    { text:"Mobile candidate experience is weak — consistent G2 complaints about application abandonment on phone; districts lose candidates mid-apply in a shortage market", conf:"high" },
+    { text:"No AI screening, matching, or candidate scoring — fully manual review process vs. Frontline's AI scoring and proactive recruitment", conf:"high" },
+    { text:"Rebranded to Hire+ with no significant product investment — cosmetic refresh signals marketing over R&D", conf:"med" },
+    { text:"Not SOC-2 compliant — Frontline leads with SOC-2 compliance as a differentiator in all hiring segment deals", conf:"high" },
+  ],
+  positioning: [
+    { text:"K-12 specialist positioning — 'built for how schools hire'; relies on familiarity, not innovation", conf:"high" },
+    { text:"Price and simplicity — targeting districts that want low-touch, low-cost ATS without broader HCM ambition", conf:"high" },
+  ],
+  traps: [
+    {
+      q: '"When a candidate is hired, show me how they flow automatically into onboarding, new hire paperwork, and payroll setup."',
+      why: "Hire+ is ATS-only. <strong>There is no automatic onboarding handoff.</strong> The answer involves manual data re-entry or an IT integration project. Frontline's recruiting-to-Central onboarding flow is seamless and automated — no reentry required."
+    },
+    {
+      q: '"Can a candidate apply for an open position from their phone in under 3 minutes — without creating an account first?"',
+      why: "Hire+'s mobile application flow receives consistent 1-2 star reviews. <strong>Many candidates abandon mid-process.</strong> In a teacher shortage market, a broken apply experience directly costs districts quality hires. Frontline's mobile-first apply is fast, frictionless, and completes on any device."
+    },
+    {
+      q: '"Is your platform SOC-2 certified — and can you share your compliance documentation?"',
+      why: "Frontline is SOC-2 compliant. <strong>Hire+ is not.</strong> This is an increasingly important procurement requirement for districts that take candidate data seriously — and a clean disqualifier when it's required."
+    },
+  ],
+  talking_points: [
+    {
+      headline: "Frontline has the deepest pool of K-12 job seekers — by far.",
+      body: "K12JobSpot has 1.7 million registered K-12 job seekers and facilitates 9.6 million+ applications annually. That's not software — that's network. Your job postings reach more qualified candidates on day one with Frontline than any competitor can match."
+    },
+    {
+      headline: "Every day a position stays open costs you real dollars.",
+      body: "In a teacher shortage, time-to-hire is existential. Districts on Frontline Recruiting fill positions faster because AI scoring, Proactive Recruitment, and automated references eliminate the manual bottlenecks. Hire+'s manual review queue can't keep up with that cadence."
+    },
+    {
+      headline: "Hiring is step one. Onboarding is where you lose new hires.",
+      body: "Hire+ gets the offer signed — then what? New hire paperwork, I-9, benefits enrollment, credential verification are manual and disconnected. Frontline's onboarding automation means new teachers are enrolled, credentialed, and ready before day one — not scrambling through stacks of paper on their first morning."
+    },
+  ],
+  battlecard: {
+    their_strengths: [
+      "K-12 familiar workflows — long-tenure HR staff comfort",
+      "Low price for simple ATS needs",
+      "Incumbent inertia across hiring segments",
+    ],
+    our_wins: [
+      "K12JobSpot — 1.7M+ K-12 job seekers; 9.6M+ annual applications",
+      "SOC-2 compliant — Hire+ is not; increasing procurement requirement",
+      "AI candidate scoring + Proactive Recruitment — not available in Hire+",
+      "Mobile-first application that actually works on phones",
+      "Recruiting → Central onboarding → Absence → PD: one connected data flow",
+    ],
+    position: [
+      "Frontline has the deepest K-12 job seeker pool and is SOC-2 compliant. Hire+ has neither.",
+      "In a teacher shortage, recruiting software is a talent competitive advantage — not just an admin tool.",
+      "The real cost of Hire+ is the candidates you lose to the district that gets back to them 40% faster.",
+    ]
+  },
+  moves: [
+    { date:"Q4 2023", type:"neutral", icon:"📣", title:"Rebranded to Hire+", desc:"Full rebrand with new website. No significant product changes announced. Signals marketing investment over product investment — a cosmetic refresh with no new hiring capabilities." },
+    { date:"2025", type:"opportunity", icon:"✅", title:"SOC-2 Compliance Gap Confirmed", desc:"Feb 2026 intel confirms Frontline's SOC-2 certification is a consistent differentiator vs. Hire+ in all hiring segment deals. Raise this proactively in any district with a formal security review process." },
+  ],
+  suggested_qs: [
+    "How do we displace Hire+ in districts where they're entrenched?",
+    "How do we lead with the K12JobSpot job seeker pool advantage?",
+    "How do we use SOC-2 compliance as a differentiator vs. Hire+?",
+    "What's the teacher shortage angle for Frontline Recruiting?",
+  ],
+  qa: {
+    "How do we displace Hire+ in districts where they're entrenched?":
+      `Target the new hire, not the incumbent user.<br><br>Long-tenure HR admins who've used Hire+ for years are the defenders. The displacement trigger is almost always:<br><br><em>1. <strong>New HR Director or Superintendent</strong> — first question: "Why is our time-to-hire so high?"<br>2. <strong>Unfilled positions crisis</strong> — when a district can't fill 15+ roles, the incumbent tool becomes easy to challenge.<br>3. <strong>Security audit or compliance review</strong> — SOC-2 compliance requirement immediately surfaces Hire+'s gap.</em><br><br>Lead with the job seeker pool: "K12JobSpot has 1.7 million registered K-12 job seekers. How many does Hire+ have access to?"`,
+
+    "How do we lead with the K12JobSpot job seeker pool advantage?":
+      `Make it concrete and competitive.<br><br>"When you post a position on Frontline, it goes to 1.7 million registered K-12 job seekers immediately. You're not competing in a general job market — you're reaching people who have specifically said they want to work in K-12 education." <br><br><em>Then compare: "What network does Hire+ post to?" They'll describe a general ATS or a smaller pool. Then: "In a teacher shortage, the districts that fill positions fastest are the ones candidates hear from first — and that starts with who sees your posting."</em>`,
+
+    "How do we use SOC-2 compliance as a differentiator vs. Hire+?":
+      `Lead with it as a risk question, not a feature.<br><br>"Before we go further, I want to flag something: do your procurement requirements include SOC-2 certification for vendors handling candidate data? We ask because Frontline is SOC-2 compliant — and Hire+ is not. If your district has a security review process, this comes up. Better to know now."<br><br><em>In most districts, this either ends the Hire+ conversation or at minimum plants a seed that grows during procurement. Raise it early, not late.</em>`,
+
+    "What's the teacher shortage angle for Frontline Recruiting?":
+      `Make it about competitive recruiting speed, not software features.<br><br>"Your district is competing with every district in a 60-mile radius for the same candidates. The districts filling positions are the ones that respond fastest — and Frontline's AI scoring, Proactive Recruitment, and 1.7M job seeker pool give you a structural speed advantage Hire+ simply can't match."<br><br><em>Close with: "In a shortage market, recruiting software isn't an HR admin tool — it's a talent competitive advantage. Hire+ is a tool for a market where you get to be slow. That market is gone."</em>`,
+  }
+},
+
+// ── TIMECLOCKPLUS ──────────────────────────────────────────────────
+tcp: {
+  name: "TimeClockPlus",
+  tagline: "Time & Attendance · Red Rover Partner · K-12 Focused",
+  threat: "MEDIUM", threat_class: "threat-med",
+  updated: "Feb 2026",
+  sources: "Website · G2 · Competitive Intel Summary Feb 2026 · Red Rover Partnership Intel",
+  stats: [
+    { value:"K-12",   label:"Vertical Focus",      color:"var(--text-primary)" },
+    { value:"4.0★",   label:"G2 Rating",           color:"var(--amber)" },
+    { value:"MED",    label:"Threat Level",         color:"var(--amber)" },
+    { value:"PRIVATE",label:"Ownership",            color:"var(--text-muted)" },
+  ],
+  summary: "TimeClockPlus (TCP) is a K-12 time & attendance point solution that competes directly against Frontline Absence & Time. TCP's most significant competitive move is their Red Rover partnership — bundling T&A with absence management to offer a credible alternative to Frontline's integrated suite in the small-to-mid market. Frontline wins on better +/- time reconciliation, superior handling of multiple job situations, free mobile app, and the connectivity of T&A data to the full HCM suite. The TCP + Red Rover bundle creates real pipeline risk but has a structural ceiling: no payroll integration, no HCM suite expansion, and no CBA configurability depth.",
+  strengths: [
+    { text:"Pay-by-user model is attractive for small districts — lower upfront cost for districts with fewer employees", conf:"high" },
+    { text:"Red Rover partner — bundled absence + T&A solution now actively competing against Frontline's integrated Absence & Time offering", conf:"high" },
+    { text:"K-12 specific time & attendance — not a generic corporate tool; understands blended overtime, multiple job situations, and K-12 pay structures", conf:"med" },
+  ],
+  weaknesses: [
+    { text:"Weaker +/- time reconciliation than Frontline — Frontline specifically wins on superior time reconciliation handling", conf:"high" },
+    { text:"Multiple job situation handling is inferior — complex K-12 assignments (extra duty, split jobs, coaching stipends) hit walls", conf:"high" },
+    { text:"No payroll integration in Red Rover bundle — the absence + TCP solution still requires manual payroll reconciliation", conf:"high" },
+    { text:"No path to HCM suite — TCP is a point solution; districts that want recruiting, onboarding, or PD have to start over", conf:"high" },
+    { text:"Free mobile app is Frontline's counter — Frontline offers a free mobile app vs. TCP's app model", conf:"med" },
+  ],
+  positioning: [
+    { text:"K-12 T&A specialist — 'built for how schools track time'; pairs with Red Rover for absence bundling narrative", conf:"high" },
+    { text:"Pay-by-user model targets small districts — explicitly positioned against Frontline's per-employee pricing for smaller budgets", conf:"high" },
+  ],
+  traps: [
+    {
+      q: '"Show me how an employee clocking in for a coaching stipend at 6pm automatically calculates their extra duty pay differential and flows into payroll that same pay period."',
+      why: "TCP's multiple job situation handling is limited. <strong>Complex K-12 assignments with split rates hit gaps.</strong> Frontline handles blended overtime, gap time, weighted overtime, and split assignments natively — TCP cannot match this depth."
+    },
+    {
+      q: '"When a sub completes an assignment in Red Rover, how does that automatically update their hours in TCP — and then flow into your payroll system — without any manual steps?"',
+      why: "The Red Rover + TCP bundle has <strong>no native payroll connectivity</strong>. The answer involves exports or manual steps. Calculate the reconciliation cost — often $6,000-15,000/year in hidden admin labor that offsets the price advantage."
+    },
+    {
+      q: '"What does the mobile clock-in experience look like — and is there a free app for employees?"',
+      why: "Frontline offers a <strong>free mobile app</strong> for clock-in with contactless kiosk options. TCP's mobile model may include app fees. Side-by-side on a phone, Frontline wins the employee experience comparison."
+    },
+  ],
+  talking_points: [
+    {
+      headline: "TCP + Red Rover is a bundle, not a platform.",
+      body: "Two systems, two logins, two contracts, two support channels — and still no payroll connection. Frontline Absence & Time is one system with one data model, native payroll integration, and a path to the full HCM suite. A bundle is not an integration."
+    },
+    {
+      headline: "Frontline's time reconciliation is purpose-built for K-12 complexity.",
+      body: "Blended overtime, gap time, weighted overtime, split assignments, extra duty pay differentials — Frontline handles every K-12 pay complexity natively. TCP's multiple job situation handling is where customers hit walls, especially in districts with complex CBAs."
+    },
+    {
+      headline: "The free mobile app closes the experience gap.",
+      body: "Frontline's free mobile app handles clock-in, job notifications, and time review in one place — for substitutes and permanent staff. Don't let TCP win on price for the mobile experience. Side-by-side, Frontline's app wins on both UX and cost."
+    },
+  ],
+  battlecard: {
+    their_strengths: [
+      "Pay-by-user model — lower cost for small districts",
+      "Red Rover bundle — absence + T&A combo pitch",
+      "K-12 specific T&A knowledge",
+    ],
+    our_wins: [
+      "Superior +/- time reconciliation — Frontline's explicit advantage per intel",
+      "Multiple job situation handling depth — blended OT, split pay, extra duty",
+      "Free mobile app — contactless kiosk + mobile clock-in at no extra cost",
+      "Native payroll integration — no CSV exports, no reconciliation labor",
+      "Full HCM suite path — T&A data connected to recruiting, onboarding, PD, analytics",
+    ],
+    position: [
+      "TCP + Red Rover is a bundle. Frontline Absence & Time is a platform.",
+      "Frontline's T&A handles every K-12 pay complexity TCP hits walls on.",
+      "The real cost of TCP is the payroll reconciliation burden and the re-implementation you'll face when you want more than T&A.",
+    ]
+  },
+  moves: [
+    { date:"2025", type:"threat", icon:"⚠️", title:"Red Rover Partnership Announced — Bundle Now Active", desc:"TCP + Red Rover now actively bundled and sold as a combined solution targeting Frontline Absence & Time. Changes the competitive dynamic in the small-to-mid market. Anticipate this bundle in any deal where Red Rover is competing on absence." },
+    { date:"2025", type:"opportunity", icon:"✅", title:"Bundle Has No Payroll Connection", desc:"Confirmed: the TCP + Red Rover bundle still has no native payroll integration. The reconciliation burden remains. This is the TCO attack surface — run the calculation before any proposal goes out against this bundle." },
+  ],
+  suggested_qs: [
+    "How do we beat the TCP + Red Rover bundle on price?",
+    "What's our T&A depth story vs. TCP for complex CBA districts?",
+    "How do we counter the pay-by-user pricing model?",
+    "What's Frontline's free mobile app advantage over TCP?",
+  ],
+  qa: {
+    "How do we beat the TCP + Red Rover bundle on price?":
+      `Run the real TCO before you compete on license fee.<br><br>"TCP + Red Rover's combined license may look cheaper upfront. But here's what districts don't calculate: the payroll reconciliation labor. With no native payroll connection in the bundle, your team is exporting CSVs and manually reconciling at every pay period close. At 8 hours/cycle × 24 cycles × $35/hr = $6,720+/year in hidden cost — often exceeding the price difference with Frontline."<br><br><em>Then add: "With Frontline, time data flows directly to payroll. That reconciliation cost is zero. That's usually the moment the conversation changes."</em>`,
+
+    "What's our T&A depth story vs. TCP for complex CBA districts?":
+      `Lead with the specific scenario, then demo it.<br><br>"TCP handles standard time & attendance well. But K-12 is not standard — you have blended overtime, gap time, weighted overtime, split assignments, extra duty stipends, and multiple job situations all running simultaneously. Frontline was built for exactly this complexity."<br><br><em>In your demo: build a scenario with a paraprofessional who works a 6-hour split assignment, has a coaching stipend at 6pm, and crosses into blended overtime. Walk through how Frontline calculates it automatically. Then ask TCP to show the same scenario. The gap surfaces immediately.</em>`,
+
+    "How do we counter the pay-by-user pricing model?":
+      `Acknowledge it, then introduce the growth cost.<br><br>"TCP's pay-by-user model looks attractive today. But what happens when your district grows — new schools, more staff, more substitutes? The per-user cost scales with your headcount. Frontline's model doesn't penalize growth the same way."<br><br><em>Also surface the hidden cost: "What's the per-user rate for substitutes? For occasional paraprofessionals? Add those up for your district. The math often surprises people."</em>`,
+
+    "What's Frontline's free mobile app advantage over TCP?":
+      `Make it concrete in the room — demo it on your phone.<br><br>"Frontline's mobile app is free for every employee and substitute — clock-in, time review, job notifications, all in one place. Pull it up right now." Then show it. "What does TCP's mobile experience look like — and is there a cost per user for the app?"<br><br><em>Then tie it to the sub experience: "Your substitutes are also using this app to accept jobs. One app, one login, one experience. They're not switching between Red Rover and TCP — it all lives in Frontline."</em>`,
+  }
+},
+
+// ── KICKUP ────────────────────────────────────────────────────────
+kickup: {
+  name: "KickUp",
+  tagline: "Professional Growth · PD Platform · Red Rover Partner",
+  threat: "MEDIUM", threat_class: "threat-med",
+  updated: "Feb 2026",
+  sources: "Website · G2 · Competitive Intel Summary Feb 2026 · Red Rover Partnership Intel",
+  stats: [
+    { value:"PD",     label:"Focus Area",          color:"var(--text-primary)" },
+    { value:"4.2★",   label:"G2 Rating",           color:"var(--green)" },
+    { value:"MED",    label:"Threat Level",         color:"var(--amber)" },
+    { value:"PRIVATE",label:"Ownership",            color:"var(--text-muted)" },
+  ],
+  summary: "KickUp is a modern professional development platform that competes against Frontline Professional Growth. Their modern UX/UI and partnership with Red Rover for HCM creates a bundled PD story targeting districts already in the Red Rover ecosystem. KickUp also partners with Learning Forward for coaching — giving them credibility in the instructional coaching space. Frontline wins by connecting PD data to other HCM modules — when evaluation scores trigger PD recommendations, when absence patterns inform professional learning plans, and when PD completion data connects to contract renewal. KickUp cannot offer this closed-loop data model.",
+  strengths: [
+    { text:"Modern UX/UI — consistently rated higher on visual experience than Frontline Professional Growth (3.5/5 on G2)", conf:"high" },
+    { text:"Red Rover partner for HCM — bundled with Red Rover and Learning Forward for coaching; creates a competitive PD + absence story", conf:"high" },
+    { text:"Learning Forward partnership — credibility in instructional coaching and professional learning quality standards", conf:"med" },
+    { text:"Purpose-built for PD — not a module attached to an HCM suite; focused product attention vs. Frontline's suite breadth tradeoffs", conf:"med" },
+  ],
+  weaknesses: [
+    { text:"No connection to evaluation data — cannot trigger PD from evaluation results; the 'Learning Loop' that connects evaluation to professional growth is Frontline's unique capability", conf:"high" },
+    { text:"No connection to HCM data — absence patterns, turnover signals, and compensation data don't inform PD planning in KickUp", conf:"high" },
+    { text:"No Danielson Framework integration — Frontline's evaluation management supports Danielson 2011/2013/2022 natively; KickUp's evaluation support is limited", conf:"high" },
+    { text:"PD-only point solution — districts that want evaluation management, PD, and coaching in one connected system have to add additional vendors to KickUp", conf:"high" },
+  ],
+  positioning: [
+    { text:"Modern coaching-first PD platform — 'professional learning that actually sticks'; positions against Frontline's legacy MyLearningPlan-era reputation", conf:"high" },
+    { text:"Learning Forward brand alignment — signals PD quality and research grounding vs. Frontline's content volume story", conf:"med" },
+    { text:"Part of the Red Rover ecosystem — now positioned as the PD layer in a Red Rover + TCP + KickUp 'modern HCM alternative' narrative", conf:"med" },
+  ],
+  traps: [
+    {
+      q: '"When a teacher receives a low score on their Danielson Framework evaluation, how does that automatically generate a personalized PD recommendation?"',
+      why: "This is Frontline's 'Learning Loop' — and KickUp cannot replicate it. <strong>KickUp has no evaluation data connection.</strong> The answer will involve a manual process or a separate evaluation system. Demo the Learning Loop immediately after this question."
+    },
+    {
+      q: '"How does your PD data connect to your HR records — so when a teacher completes a credential renewal course, that automatically updates their credential file?"',
+      why: "KickUp is PD-only. <strong>There is no automatic HR record update.</strong> Frontline's Central module receives PD completion and credential data automatically. In districts where credential tracking is compliance-critical, this gap is disqualifying."
+    },
+    {
+      q: '"Show me how you support Danielson Framework 2022 edition — including the updated domains and evidence collection."',
+      why: "Frontline's evaluation management was built around Danielson — including the 2011, 2013, and 2022 editions. KickUp's evaluation support is limited. <strong>The Danielson question quickly surfaces which product was purpose-built for K-12 evaluation.</strong>"
+    },
+  ],
+  talking_points: [
+    {
+      headline: "The Learning Loop is what makes PD stick — and only Frontline has it.",
+      body: "When a teacher's evaluation shows a growth area, Frontline automatically surfaces relevant PD recommendations from your catalog. When they complete the PD, it updates their evaluation file. That closed loop — evaluation to learning to evidence — is what separates professional growth from professional box-checking. KickUp has no evaluation connection."
+    },
+    {
+      headline: "Frontline connects PD to the whole person — not just the learner.",
+      body: "Absence patterns, evaluation trends, credential expirations, contract renewal timelines — all of this informs professional learning decisions in Frontline. KickUp sees a learner. Frontline sees an employee. That's the difference between a PD tool and a workforce development platform."
+    },
+    {
+      headline: "KickUp + Red Rover + TCP is three vendors, not a platform.",
+      body: "The Red Rover ecosystem asks districts to manage three separate systems, three contracts, and three support channels for what Frontline does in one. When a KickUp PD completion needs to update a credential file or trigger a contract renewal, there's no automatic connection. That's not a modern HCM stack — it's a collection of tools."
+    },
+  ],
+  battlecard: {
+    their_strengths: [
+      "Modern UX/UI — higher visual appeal than Frontline PG (3.5★)",
+      "Red Rover + Learning Forward partnership ecosystem",
+      "Focused PD product attention — not a module in a large suite",
+    ],
+    our_wins: [
+      "Learning Loop — evaluation data triggers PD recommendations automatically",
+      "Danielson Framework 2022 support — natively built in",
+      "Credential tracking connection — PD completion updates HR records automatically",
+      "350+ hours of on-demand K-12 PD content — included in Professional Growth",
+      "PD connected to absence, evaluation, contract renewal in one data model",
+    ],
+    position: [
+      "KickUp is a PD tool. Frontline Professional Growth is a workforce development platform connected to evaluation, HR, and compliance data.",
+      "The Learning Loop — evaluation to PD to evidence — exists only in Frontline.",
+      "KickUp + Red Rover + TCP = three vendors. Frontline = one platform.",
+    ]
+  },
+  moves: [
+    { date:"2025", type:"threat", icon:"⚠️", title:"KickUp Now Part of Red Rover HCM Ecosystem", desc:"Feb 2026 intel confirms KickUp is actively bundled with Red Rover + Learning Forward as part of the 'modern HCM alternative' narrative. Anticipate KickUp in any deal where Red Rover is competing — they're presenting as a full-stack alternative to Frontline's Professional Growth." },
+    { date:"2025", type:"opportunity", icon:"✅", title:"Frontline PG G2 Rating Gap — Known Vulnerability, Known Response", desc:"Frontline Professional Growth is the weakest-reviewed product in the portfolio (3.5/5 G2). This is the KickUp attack surface. Counter by leading with the Learning Loop evaluation connection and demonstrating Danielson 2022 support — two things KickUp cannot match." },
+  ],
+  suggested_qs: [
+    "How do we beat KickUp when their UX is better than Frontline PG?",
+    "What's our Learning Loop story vs. KickUp's standalone PD?",
+    "How do we counter the Red Rover + KickUp + TCP ecosystem pitch?",
+    "How do we position Danielson support vs. KickUp in an evaluation deal?",
+  ],
+  qa: {
+    "How do we beat KickUp when their UX is better than Frontline PG?":
+      `Acknowledge it, then shift the comparison criteria.<br><br>"KickUp has a cleaner interface — that's fair. But let's talk about what professional growth is supposed to accomplish. If PD is disconnected from evaluation results, disconnected from HR records, and disconnected from credential tracking, a beautiful UI doesn't create better outcomes."<br><br><em>Then demo the Learning Loop: show an evaluation score triggering a PD recommendation, show the completion updating a credential file. Ask: "Can KickUp do this automatically?" The answer is no. UX is a surface. Connection is a system.</em>`,
+
+    "What's our Learning Loop story vs. KickUp's standalone PD?":
+      `The Learning Loop is the sharpest differentiation story in this segment.<br><br>"KickUp is excellent at delivering professional learning. Frontline is excellent at connecting professional learning to the decisions that matter — who needs it, why they need it, and whether it worked."<br><br><em>Walk through the three-step loop: 1) Teacher receives low Danielson observation score → Frontline surfaces targeted PD from the catalog automatically. 2) Teacher completes the PD → completion updates their evaluation file and credential record. 3) HR sees a direct line from professional growth to evaluation improvement. That chain doesn't exist in KickUp.</em>`,
+
+    "How do we counter the Red Rover + KickUp + TCP ecosystem pitch?":
+      `Reframe 'ecosystem' as 'three vendors.'<br><br>"Red Rover + KickUp + TCP is a collection of partnerships — not an integrated platform. Ask them to show you one data flow that goes from absence pattern to PD recommendation to credential update, end to end, automatically. It doesn't exist in that bundle."<br><br><em>Then position: "Frontline does this in one system. One data model, one contract, one CSM. When your absence data, evaluation data, PD data, and credential data all live together, you make better decisions. When they live in three separate systems, you make spreadsheets."</em>`,
+
+    "How do we position Danielson support vs. KickUp in an evaluation deal?":
+      `Lead with specificity — version support and evidence collection depth.<br><br>"Frontline supports Danielson Framework 2011, 2013, and 2022 editions natively — including the updated domains, rubrics, and evidence collection workflows. This is purpose-built, not a workaround."<br><br><em>Then ask: "Which Danielson edition does your district use today, and are you planning to move to the 2022 framework?" Most districts are. Then: "Show me how KickUp supports 2022 evidence collection." The answer reveals the gap — and Frontline's evaluation management is purpose-built for exactly this.</em>`,
+  }
+},
+
+}; // end DATA
+
+// ═══════════════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════════════
+
+let currentComp = 'redrover';
+let currentTab = 'answers'; // MCI Answers is default hero tab
+
+// ═══════════════════════════════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════════════════════════════
+
+function selectComp(id, btn) {
+  currentComp = id;
+  currentTab = 'answers';
+  document.querySelectorAll('.comp-card').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function switchTab(t) {
+  currentTab = t;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  const activeBtn = document.querySelector(`[data-tab="${t}"]`);
+  if (activeBtn) activeBtn.classList.add('active');
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  const activeContent = document.getElementById('tab-' + t);
+  if (activeContent) activeContent.classList.add('active');
+}
+
+function render() {
+  const d = DATA[currentComp];
+  const el = document.getElementById('main');
+
+  el.innerHTML = `
+    <div class="comp-header">
+      <div class="comp-header-top">
+        <div>
+          <div class="comp-name">${d.name}</div>
+          <div class="comp-tagline">${d.tagline}</div>
+        </div>
+        <div class="comp-meta-pills">
+          <span class="meta-pill threat-badge ${d.threat_class}">${d.threat} THREAT</span>
+          <span class="meta-pill">⏱ ${d.updated}</span>
+          <span class="meta-pill">📡 ${d.sources}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn ${currentTab==='answers'?'active':''}" data-tab="answers" onclick="switchTab('answers')">
+        ⚡ MCI Answers <span class="tab-star">HERO</span>
+      </button>
+      <button class="tab-btn ${currentTab==='overview'?'active':''}" data-tab="overview" onclick="switchTab('overview')">Overview</button>
+      <button class="tab-btn ${currentTab==='traps'?'active':''}" data-tab="traps" onclick="switchTab('traps')">🪤 Trap Questions</button>
+      <button class="tab-btn ${currentTab==='talking'?'active':''}" data-tab="talking" onclick="switchTab('talking')">💬 Talking Points</button>
+      <button class="tab-btn ${currentTab==='battlecard'?'active':''}" data-tab="battlecard" onclick="switchTab('battlecard')">⚔ Battlecard</button>
+      <button class="tab-btn ${currentTab==='moves'?'active':''}" data-tab="moves" onclick="switchTab('moves')">📡 Intel Feed</button>
+      ${d.winback ? `<button class="tab-btn ${currentTab==='winback'?'active':''}" data-tab="winback" onclick="switchTab('winback')" style="color:var(--green)">↩ Win-Back <span class="tab-star" style="background:var(--green)">NEW</span></button>` : ''}
+    </div>
+
+    <!-- MCI ANSWERS ──────────────────────────────────────────────── -->
+    <div class="tab-content ${currentTab==='answers'?'active':''}" id="tab-answers">
+      <div class="answers-layout">
+        <div class="chat-wrap">
+          <div class="chat-top">
+            <div class="chat-top-icon">⚡</div>
+            <div class="chat-top-text">
+              <div class="chat-top-title">MCI Answers — ${d.name}</div>
+              <div class="chat-top-sub">Ask any competitive question. Get an instant, market-ready response.</div>
+            </div>
+            <div class="chat-status">
+              <div class="chat-status-dot"></div>
+              READY
+            </div>
+          </div>
+          <div class="chat-messages" id="chat-msgs">
+            <div class="msg bot">
+              <div class="msg-bubble">
+                I'm your MCI intelligence agent for <strong>${d.name}</strong>. Ask me anything — how to win a deal, handle an objection, counter a specific pitch, or identify which districts to target. Try one of the questions on the right to see what I can do.
+              </div>
+              <div class="msg-time">MCI Agent · ready</div>
+            </div>
+          </div>
+          <div class="chat-footer">
+            <input class="chat-input" id="chat-in" placeholder='Ask about ${d.name} — e.g. "How do we beat them on price?"' onkeydown="if(event.key==='Enter')sendMsg()">
+            <button class="chat-send" onclick="sendMsg()" title="Send">➤</button>
+          </div>
+        </div>
+
+        <div class="right-panel">
+          <div class="qs-card">
+            <div class="qs-label">💡 Suggested Questions</div>
+            ${d.suggested_qs.map((q, qi) => `
+              <button class="q-btn" onclick="askQ(this, ${qi})">${q}</button>
+            `).join('')}
+          </div>
+          <div class="tip-card">
+            <div class="tip-title">🎯 Demo Tip</div>
+            <div class="tip-body">Click any suggested question to see a full, market-ready answer instantly. In production, this connects to a live Claude API for unlimited questions about any competitor.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OVERVIEW ──────────────────────────────────────────────────── -->
+    <div class="tab-content ${currentTab==='overview'?'active':''}" id="tab-overview">
+      <div class="grid-4" style="margin-bottom:16px">
+        ${d.stats.map(s => `
+          <div class="stat-card">
+            <div class="stat-value" style="color:${s.color}">${s.value}</div>
+            <div class="stat-label">${s.label}</div>
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="summary-banner">
+        <div class="summary-banner-label">📋 Executive Summary</div>
+        <div class="summary-banner-text">${d.summary}</div>
+      </div>
+
+      <div class="grid-2" style="margin-top:16px">
+        <div class="card">
+          <div class="card-label" style="color:var(--red)">⚠ Their Strengths — Know Before You Walk In</div>
+          <div class="insight-list">
+            ${d.strengths.map(i => `
+              <div class="insight-item" style="background:var(--red-light)">
+                <div class="i-dot" style="background:var(--red)"></div>
+                <div>${i.text}<span class="conf-badge conf-${i.conf}">${i.conf.toUpperCase()}</span></div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-label" style="color:var(--green)">✅ Their Weaknesses — Where We Win</div>
+          <div class="insight-list">
+            ${d.weaknesses.map(i => `
+              <div class="insight-item" style="background:var(--green-light)">
+                <div class="i-dot" style="background:var(--green)"></div>
+                <div>${i.text}<span class="conf-badge conf-${i.conf}">${i.conf.toUpperCase()}</span></div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <div class="card-label">📣 How They Position</div>
+        <div class="insight-list">
+          ${d.positioning.map(i => `
+            <div class="insight-item" style="background:var(--fl-blue-light)">
+              <div class="i-dot" style="background:var(--fl-blue)"></div>
+              <div>${i.text}<span class="conf-badge conf-${i.conf}">${i.conf.toUpperCase()}</span></div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+
+    <!-- TRAP QUESTIONS ────────────────────────────────────────────── -->
+    <div class="tab-content ${currentTab==='traps'?'active':''}" id="tab-traps">
+      <div class="summary-banner" style="background:linear-gradient(135deg,var(--amber-light),white);border-color:var(--amber-mid);border-left-color:var(--amber)">
+        <div class="summary-banner-label" style="color:var(--amber)">🪤 What Are Trap Questions?</div>
+        <div class="summary-banner-text">Trap questions are discovery questions you ask <em>in front of the prospect</em> — questions that sound neutral but expose a competitor's gaps in real time. Ask these during joint evaluations or whenever ${d.name} is in the room.</div>
+      </div>
+      ${d.traps.map((t, i) => `
+        <div class="trap-card">
+          <div class="trap-question">"${t.q}"</div>
+          <div class="trap-why"><strong>Why it works:</strong> ${t.why}</div>
+        </div>
+      `).join('')}
+    </div>
+
+    <!-- TALKING POINTS ────────────────────────────────────────────── -->
+    <div class="tab-content ${currentTab==='talking'?'active':''}" id="tab-talking">
+      <div class="summary-banner">
+        <div class="summary-banner-label">💬 Frontline Positioning vs. ${d.name}</div>
+        <div class="summary-banner-text">These talking points are designed for use in prospect conversations, proposals, and executive briefings. Each one directly counters ${d.name}'s primary selling motions.</div>
+      </div>
+      ${d.talking_points.map(tp => `
+        <div class="tp-card">
+          <div class="tp-headline">${tp.headline}</div>
+          <div class="tp-body">${tp.body}</div>
+        </div>
+      `).join('')}
+    </div>
+
+    <!-- BATTLECARD ────────────────────────────────────────────────── -->
+    <div class="tab-content ${currentTab==='battlecard'?'active':''}" id="tab-battlecard">
+      <div class="bc-grid">
+        <div class="bc-box strengths">
+          <div class="bc-box-title">⚔ What They Lead With</div>
+          ${d.battlecard.their_strengths.map(s => `<div class="bc-item"><div class="bc-bullet"></div><div>${s}</div></div>`).join('')}
+        </div>
+        <div class="bc-box weaknesses">
+          <div class="bc-box-title">✅ Where Frontline Wins</div>
+          ${d.battlecard.our_wins.map(s => `<div class="bc-item"><div class="bc-bullet"></div><div>${s}</div></div>`).join('')}
+        </div>
+        <div class="bc-box position">
+          <div class="bc-box-title">🎯 How to Position Frontline</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px 20px">
+            ${d.battlecard.position.map(s => `<div class="bc-item"><div class="bc-bullet"></div><div>${s}</div></div>`).join('')}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INTEL FEED ────────────────────────────────────────────────── -->
+    <div class="tab-content ${currentTab==='moves'?'active':''}" id="tab-moves">
+      <div class="card">
+        <div class="card-label">📡 Recent Intelligence — ${d.name}</div>
+        <div class="timeline">
+          ${d.moves.map(m => `
+            <div class="tl-item">
+              <div class="tl-date">${m.date}</div>
+              <div class="tl-marker ${m.type}">${m.icon}</div>
+              <div class="tl-body">
+                <div class="tl-tag ${m.type==='threat'?'threat-high':m.type==='opportunity'?'threat-low':'threat-med'}">${m.type.toUpperCase()}</div>
+                <div class="tl-title">${m.title}</div>
+                <div class="tl-desc">${m.desc}</div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+
+    <!-- WIN-BACK ───────────────────────────────────────────────────── -->
+    ${d.winback ? `
+    <div class="tab-content ${currentTab==='winback'?'active':''}" id="tab-winback">
+
+      <div class="wb-hero">
+        <div class="wb-hero-label">↩ Win-Back Intelligence — Red Rover</div>
+        <div class="wb-hero-text">${d.winback.intro}</div>
+      </div>
+
+      <div class="wb-section-title">🔍 The 5 Return Triggers — What to Watch For & What to Say</div>
+
+      <div class="wb-trigger-grid">
+        ${d.winback.triggers.map(t => `
+          <div class="wb-trigger-card">
+            <div class="wb-trigger-top">
+              <div class="wb-trigger-signal">${t.signal}</div>
+              <div class="wb-timing-pill">${t.timing}</div>
+            </div>
+            <div class="wb-trigger-section-label">Watch For</div>
+            <div class="wb-trigger-watchfor">${t.watchfor}</div>
+            <div class="wb-trigger-section-label">Trusted Advisor Script</div>
+            <div class="wb-trigger-script">${t.script}</div>
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="wb-section-title">🤝 The Trusted Advisor Tone — How to Frame Every Win-Back Conversation</div>
+
+      <div class="wb-advisor-box">
+        <div class="wb-advisor-label">⚖ Tone Principle</div>
+        <div class="wb-advisor-text">
+          ${d.winback.advisor_framing}<br><br>
+          <strong>Open with:</strong> "Tell me about your experience — what was working, and where did things start to get complicated?"<br><br>
+          <strong>Validate their decision:</strong> "Red Rover was the right call for what you needed at the time. The question now is what you need for the next 3 years."<br><br>
+          <strong>Never say:</strong> "We told you so." · "Red Rover was always going to fall short." · "This is what happens when you go with the cheaper option."<br><br>
+          <strong>Always offer:</strong> A peer reference from a district that made the same journey. This is more powerful than any talking point.
+        </div>
+      </div>
+
+      <div class="wb-section-title">💬 Voice of Customer — Win-Back Testimonials</div>
+
+      <div style="background:var(--amber-light);border:1px solid var(--amber-mid);border-left:4px solid var(--amber);border-radius:var(--radius);padding:14px 18px;margin-bottom:16px;">
+        <div style="font-size:10px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--amber);font-family:'JetBrains Mono',monospace;margin-bottom:6px;">⚠ Fieldwork Needed</div>
+        <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">These testimonial slots are currently placeholders. The MCI system needs 3–5 validated win-back district stories — organized by trigger type — to make this section live. See the Win-Back Content Structure document for the interview guide and data collection framework.</div>
+      </div>
+
+      <div class="wb-testimonial-grid">
+        ${d.winback.testimonials.map(t => `
+          <div class="wb-testimonial-card ${t.status === 'ready' ? 'filled' : ''}">
+            <div class="wb-t-status ${t.status === 'ready' ? 'ready' : 'needs'}">${t.status === 'ready' ? '✓ Ready to Use' : 'Needs Fieldwork'}</div>
+            <div class="wb-t-trigger-tag">Trigger: ${t.trigger}</div>
+            <div class="wb-t-quote ${t.status === 'ready' ? '' : 'placeholder'}">${t.status === 'ready' ? `"${t.quote}"` : t.quote}</div>
+            <div class="wb-t-usage">📋 ${t.usage}</div>
+          </div>
+        `).join('')}
+      </div>
+
+    </div>
+    ` : ''}
+  `;
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// CHAT ENGINE
+// ═══════════════════════════════════════════════════════════════════
+
+function sendMsg() {
+  const inp = document.getElementById('chat-in');
+  const q = inp.value.trim();
+  if (!q) return;
+  inp.value = '';
+  handleQ(q);
+}
+
+function askQ(btn, qi) {
+  const q = DATA[currentComp].suggested_qs[qi];
+  btn.style.opacity = '0.5';
+  setTimeout(() => btn.style.opacity = '1', 2000);
+  switchTab('answers');
+  setTimeout(() => handleQ(q), 80);
+}
+
+function handleQ(question) {
+  const msgs = document.getElementById('chat-msgs');
+  const d = DATA[currentComp];
+
+  msgs.innerHTML += `
+    <div class="msg user">
+      <div class="msg-bubble">${question}</div>
+      <div class="msg-time">You · just now</div>
+    </div>
+  `;
+  msgs.scrollTop = msgs.scrollHeight;
+
+  const tid = 'typ-' + Date.now();
+  msgs.innerHTML += `
+    <div class="msg bot" id="${tid}">
+      <div class="typing"><span></span><span></span><span></span></div>
+    </div>
+  `;
+  msgs.scrollTop = msgs.scrollHeight;
+
+  setTimeout(() => {
+    const el = document.getElementById(tid);
+    const answer = resolveAnswer(d, question);
+    if (el) {
+      el.innerHTML = `
+        <div class="msg-bubble">${answer}</div>
+        <div class="msg-time">MCI Agent · now</div>
+      `;
+    }
+    msgs.scrollTop = msgs.scrollHeight;
+  }, 1000 + Math.random() * 700);
+}
+
+function resolveAnswer(d, question) {
+  // Exact match
+  if (d.qa[question]) return d.qa[question];
+
+  // Fuzzy keyword match
+  const ql = question.toLowerCase();
+  let best = null, bestScore = 0;
+  for (const [key, val] of Object.entries(d.qa)) {
+    const words = key.toLowerCase().split(/\W+/).filter(w => w.length > 4);
+    const score = words.filter(w => ql.includes(w)).length;
+    if (score > bestScore) { bestScore = score; best = val; }
+  }
+  if (bestScore >= 2) return best;
+
+  // Contextual fallback
+  return `Great question about <strong>${d.name}</strong>. Based on the latest intelligence collected ${d.updated}:<br><br>${d.summary}<br><br><em>For a fully tailored answer to this specific question, connect this demo to a live Claude API key — then MCI Answers can respond intelligently to any question your team asks in real time.</em>`;
+}
+
+// ── INIT
+render();
+</script>
+</body>
+</html>
