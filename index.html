@@ -857,147 +857,6 @@ main {
   line-height: 1.6;
 }
 
-/* ── WIN-BACK ────────────────────────────────────────────────────── */
-.wb-hero {
-  background: linear-gradient(135deg, #EAF7F0 0%, #ffffff 100%);
-  border: 1px solid var(--green-mid);
-  border-left: 4px solid var(--green);
-  border-radius: var(--radius);
-  padding: 20px 24px;
-  margin-bottom: 20px;
-}
-.wb-hero-label {
-  font-size: 10px; font-weight: 800; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--green);
-  font-family: 'JetBrains Mono', monospace; margin-bottom: 8px;
-  display: flex; align-items: center; gap: 8px;
-}
-.wb-hero-label::after {
-  content: ''; flex: 1; height: 1px; background: var(--green-mid);
-}
-.wb-hero-text {
-  font-size: 14.5px; line-height: 1.7; color: var(--text-primary);
-}
-
-.wb-section-title {
-  font-size: 10px; font-weight: 800; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--text-muted);
-  font-family: 'JetBrains Mono', monospace;
-  margin: 24px 0 12px;
-  display: flex; align-items: center; gap: 10px;
-}
-.wb-section-title::after {
-  content: ''; flex: 1; height: 1px; background: var(--border);
-}
-
-.wb-trigger-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
-  margin-bottom: 8px;
-}
-.wb-trigger-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px 18px;
-  box-shadow: var(--shadow-sm);
-  transition: border-color 0.15s, box-shadow 0.15s;
-}
-.wb-trigger-card:hover {
-  border-color: var(--green-mid);
-  box-shadow: var(--shadow-md);
-}
-.wb-trigger-top {
-  display: flex; align-items: flex-start; justify-content: space-between;
-  margin-bottom: 10px; gap: 8px;
-}
-.wb-trigger-signal {
-  font-weight: 700; font-size: 13.5px; color: var(--text-primary);
-  line-height: 1.3;
-}
-.wb-timing-pill {
-  flex-shrink: 0;
-  font-size: 9.5px; font-weight: 700;
-  font-family: 'JetBrains Mono', monospace;
-  background: var(--amber-light); color: var(--amber);
-  border: 1px solid var(--amber-mid);
-  border-radius: 4px; padding: 2px 7px;
-  letter-spacing: 0.04em; white-space: nowrap;
-}
-.wb-trigger-section-label {
-  font-size: 9.5px; font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--text-muted);
-  font-family: 'JetBrains Mono', monospace; margin-bottom: 4px;
-}
-.wb-trigger-watchfor {
-  font-size: 12.5px; color: var(--text-secondary); line-height: 1.55;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border);
-}
-.wb-trigger-script {
-  font-size: 12.5px; color: var(--text-primary); line-height: 1.6;
-  background: var(--fl-blue-light);
-  border-left: 3px solid var(--fl-blue);
-  padding: 8px 12px;
-  border-radius: 0 6px 6px 0;
-  font-style: italic;
-}
-
-.wb-advisor-box {
-  background: linear-gradient(135deg, var(--fl-blue-light), white);
-  border: 1px solid var(--fl-blue-mid);
-  border-left: 4px solid var(--fl-blue);
-  border-radius: var(--radius);
-  padding: 20px 24px;
-  margin-bottom: 12px;
-}
-.wb-advisor-label {
-  font-size: 10px; font-weight: 800; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--fl-blue);
-  font-family: 'JetBrains Mono', monospace; margin-bottom: 10px;
-}
-.wb-advisor-text {
-  font-size: 14px; line-height: 1.75; color: var(--text-primary);
-}
-.wb-advisor-text strong { color: var(--fl-blue); }
-
-.wb-testimonial-grid {
-  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;
-}
-.wb-testimonial-card {
-  background: var(--surface);
-  border: 1.5px dashed var(--border-strong);
-  border-radius: var(--radius);
-  padding: 16px;
-  position: relative;
-}
-.wb-testimonial-card.filled {
-  border-style: solid;
-  border-color: var(--green-mid);
-  background: var(--green-light);
-}
-.wb-t-status {
-  font-size: 9px; font-weight: 800; letter-spacing: 0.12em;
-  text-transform: uppercase; font-family: 'JetBrains Mono', monospace;
-  padding: 2px 7px; border-radius: 3px; display: inline-block;
-  margin-bottom: 8px;
-}
-.wb-t-status.needs { background: var(--amber-light); color: var(--amber); }
-.wb-t-status.ready { background: var(--green-light); color: var(--green); border: 1px solid var(--green-mid); }
-.wb-t-trigger-tag {
-  font-size: 10px; font-weight: 700; color: var(--text-muted);
-  text-transform: uppercase; letter-spacing: 0.08em;
-  font-family: 'JetBrains Mono', monospace; margin-bottom: 6px;
-}
-.wb-t-quote {
-  font-size: 12.5px; line-height: 1.6; color: var(--text-secondary);
-  font-style: italic;
-}
-.wb-t-quote.placeholder { color: var(--text-muted); }
-.wb-t-usage {
-  font-size: 11px; color: var(--fl-blue); margin-top: 8px; font-weight: 600;
-}
-
 /* ── ANIMATIONS ──────────────────────────────────────────────────── */
 @keyframes fadeIn {
   from { opacity:0; } to { opacity:1; }
@@ -1111,7 +970,7 @@ redrover: {
     { value:"~25%",   label:"Absence Mkt Share",      color:"var(--red)" },
     { value:"PRIVATE",label:"Ownership",              color:"var(--text-muted)" },
   ],
-  summary: "Red Rover has grown from a sub-500 district niche player to 1,700+ districts across 45 states — the fastest growth in K-12 HCM. They now compete across all HCM segments, and their strategic partnership with TimeClockPlus has closed their time & attendance gap. Red Rover's 13-second average support response time and weekly feature update cadence are resonating with districts frustrated by Frontline's fragmented UX and slower release cycle. Structural weaknesses persist: no payroll connectivity, no full HCM suite path, and shallow CBA configurability. Corona-Norco USD switching away from Frontline in July 2025 is their most prominent public win — expect them to weaponize that reference aggressively.",
+  summary: "Red Rover is a high-growth competitor positioning on 'modern/focused' UX and fast implementation. CSO Jon Kost's Gong analysis shows Red Rover appears in deals during price screening + integration expectations conversations, winning on modern positioning, broad integration catalog, and documented district switches (Corona-Norco USD). Frontline's counter strategy (CSO-validated): (1) Pricing clarity — calculate real TCO including integration labor costs Red Rover doesn't disclose; (2) Outcome proof — show 24-month satisfaction, not 6-month impressions; (3) Integration truth-telling — Red Rover's CSV file 'integrations' vs. Frontline's real-time data sync; (4) Reliability credibility — 25+ years of K-12 playbook vs. Red Rover learning on the job. Red Rover looks great for 6-9 months (modern/focused works), then hits structural walls: no native payroll integration ($10K-18K annual hidden costs), shallow CBA configurability, no full HCM suite path. Boomerang pattern: districts return within 12-24 months when operational limitations become critical.",
   strengths: [
     { text:"Native iOS/Android app with 4.6★ rating — substitutes and coordinators love the UX; demos extremely well against Frontline's fragmented interface", conf:"high" },
     { text:"13-second average support response time — an explicit selling point they now use against Frontline in every deal", conf:"high" },
@@ -1177,6 +1036,30 @@ redrover: {
       headline: "References: ask specifically about complex CBA districts.",
       body: "Red Rover's reference districts tend to be smaller and non-union. Ask them for a reference from a district with a complex bargaining agreement and a 3,000+ sub pool. The references rarely exist — and that silence is the answer."
     },
+    {
+      headline: "Our job posting network reaches 100x more educators.",
+      body: "Frontline's 12,000+ district network means your job postings reach millions of qualified educators through our proactive recruiting campaigns. Red Rover's 1,700 districts can't match this network effect. The result: faster fills, higher quality candidates, and lower recruiting costs for your district."
+    },
+    {
+      headline: "Enterprise security: we're SOC-2 compliant.",
+      body: "For larger districts with data governance and compliance requirements, Frontline's SOC-2 certification is a requirement Red Rover doesn't meet. If your RFP includes enterprise security standards, we win before the conversation even starts."
+    },
+    {
+      headline: "Let's calculate the real TCO — including integration costs Red Rover doesn't disclose.",
+      body: "Red Rover's broad integration catalog sounds impressive until you look under the hood. Red Rover integrations mean CSV file exports and manual uploads every pay period. Frontline's integrations are real-time, bidirectional data flow. When you calculate integration labor costs (hours/month × pay periods × labor rate), Frontline's 'higher' license cost becomes lower total cost of ownership. Pricing clarity always wins over pricing illusion."
+    },
+    {
+      headline: "Show me the district that switched to Red Rover and is still happy at 24 months.",
+      body: "Corona-Norco USD is Red Rover's marquee case study — and we respect it. But ask Red Rover for a reference from a district that switched to Red Rover 2+ years ago and is completely satisfied today. The silence is the answer. Most districts that tried Red Rover for absence hit walls by month 12-18 when payroll integration gaps and CBA configurability limits become critical. We have customers who returned to Frontline after discovering these gaps. Red Rover's outcome proof is at month 6. Our outcome proof is at month 24."
+    },
+    {
+      headline: "Integration truth-telling: CSV files aren't integration.",
+      body: "When Red Rover lists integration with Skyward, Munis, Tyler, or any payroll system, ask what that integration means. Most answers will be: 'We export a file that you upload to payroll.' That's not integration. That's a workaround. Frontline's payroll integrations are real: data syncs automatically, reconciliation happens in real-time, zero manual steps. There's a massive difference between 'we have a file export' and 'we have integrated payroll.' Don't let integration breadth fool you — integration depth is what matters."
+    },
+    {
+      headline: "Frontline: 25+ years of K-12 HCM playbook. Red Rover: modern but unproven at scale.",
+      body: "Red Rover's growth is impressive — 1,700 districts in 5 years. Frontline is serving 12,000+ districts with 25+ years of K-12 experience. When your district faces a complex union negotiation, a payroll emergency at 4pm on Friday, or a compliance audit, you want a vendor with 25 years of K-12 playbook — not a vendor learning on the job. Modern and fresh are good for UX. Reliability and expertise are good for crises. Both matter, but only one solves your emergency."
+    },
   ],
   battlecard: {
     their_strengths: [
@@ -1190,6 +1073,9 @@ redrover: {
       "CBA/union rules configurability for complex contracts",
       "Advanced analytics — predictive fill, pool health, trend reporting",
       "Path to full HCM suite — one platform for full staff lifecycle",
+      "12,000+ district network vs 1,700 — largest educator job posting pool in K-12",
+      "SOC-2 compliance — enterprise security standard Red Rover doesn't meet",
+      "Proactive recruiting — automatically reach qualified candidates; Red Rover relies on passive job boards",
       "Larger district track record and enterprise support model",
     ],
     position: [
@@ -1212,8 +1098,10 @@ redrover: {
     "How do we discuss the Corona-Norco USD loss without sounding defensive?",
     "What's our best one-liner to differentiate from Red Rover?",
     "How do we counter Red Rover's 13-second support response claim?",
-    "A prospect tried Red Rover and is back in market — how do we approach?",
   ],
+  future_enhancements: {
+    boomerang_narrative: "CSO Jon Kost reports that Frontline has found many districts who boomerang/return from Red Rover after 12-24 months when payroll integration gaps and CBA configurability limitations become critical in production use. Future phase should document 2-3 specific customer stories (district name, timeline, reason for return) to support the 'point solution limitation' narrative. This would be powerful proof point: 'We have reference customers who tried Red Rover and returned — they can speak to the gap you'll hit.'",
+  },
   qa: {
     "How do we handle a prospect who says Red Rover is cheaper?":
       `Validate the number, then reframe the comparison.<br><br><strong>Step 1:</strong> Agree — "You're right, Red Rover's license fee is lower for absence-only."<br><br><strong>Step 2:</strong> Introduce TCO. <em>Ask: "How many hours per pay period does your team spend reconciling absence data with payroll today? And how many hours after you switch to Red Rover?" The TCP partnership doesn't change this — Red Rover still has no native payroll integration. At 8 hours/cycle × 24 pay periods × $35/hr = $6,720/year in hidden labor cost — often wiping out the savings.</em><br><br><strong>Step 3:</strong> Future-proof the conversation. "In 3 years when you want integrated recruiting or PD tracking, what does the Red Rover upgrade path look like?" A TCP bundle isn't a platform. Frontline's total cost when you include future integrations is almost always lower.`,
@@ -1232,69 +1120,100 @@ redrover: {
 
     "How do we counter Red Rover's 13-second support response claim?":
       `Validate it, then reframe what support means.<br><br>"A 13-second response time sounds great — and for simple questions, it is. But let's talk about what happens when you have a complex CBA configuration issue, a payroll integration problem, or a custom reporting request. Those aren't chat-window questions."<br><br><em>Then offer Frontline's model: "Frontline provides a dedicated named Customer Success Manager — someone who knows your district, your contract, your bargaining agreement. When something complex breaks, you want an expert who knows your setup, not a fast response from someone starting from zero."</em>`,
-
-    "A prospect tried Red Rover and is back in market — how do we approach?":
-      `This is a gift — treat it like one, carefully.<br><br><strong>The golden rule: never say "we told you so."</strong> The rep who wins this deal is the one who makes the district feel validated, not embarrassed.<br><br><strong>Step 1 — lead with curiosity, not a pitch.</strong> "Tell me about your experience. What was working, and where did things start to get complicated?" Let them name the pain. The most common answers: payroll reconciliation hours, CBA configuration hitting walls, complexity they couldn't grow into, or a new HR director who wanted more than Red Rover could offer.<br><br><em>Step 2 — validate their original decision.</em> "Red Rover was actually the right call for what you needed at the time — they're excellent at fast, clean absence management for straightforward use cases. The question now is what you need for the next 3 years."<br><br><strong>Step 3 — show what changed, not just what you offer.</strong> Pull up the win-back signals tab and walk through which trigger applied to them. Then connect to specifically how Frontline solves that trigger — not generically, but for their district size, CBA complexity, and suite ambitions.<br><br><em>Step 4 — offer the reference proactively.</em> "We have several districts who made a similar journey and came back. Would it be useful to speak with one?" A peer reference from a district who left and returned is more powerful than any rep talking point.</em>`,
   },
-  winback: {
-    intro: "These are the four patterns that most reliably predict when a Red Rover district is ready to evaluate returning to Frontline. Each includes what to watch for, when it tends to surface, and the exact framing to use as a trusted advisor — not a salesperson who was waiting for them to fail.",
-    triggers: [
+  win_back: {
+    headline: "THE BOOMERANG EFFECT: Why Districts Return to Frontline from Red Rover",
+    context: "Frontline has documented multiple cases where districts departed for Red Rover, then returned to Frontline within 12-24 months. The pattern is consistent: they leave for Red Rover's UX/speed promise, they return when structural limitations become critical in production. This is a powerful reference and objection-handling strategy.",
+    typical_timeline: {
+      month_0_to_3: "Decision: District chooses Red Rover for mobile-first experience, faster implementation, lower cost, and dissatisfaction with Frontline's legacy UX.",
+      month_3_to_6: "Implementation: Red Rover deployment is fast and smooth. Excitement is high. Substitutes love the mobile app. Leadership is pleased with the quick win.",
+      month_6_to_12: "Production Reality: Payroll reconciliation labor begins accumulating. HR team is manually exporting CSVs and reconciling absence hours every pay period — eating 6-10 hours per cycle. CBA configurability hits walls with union rules. Absence analytics are limited; HR director can't answer questions about absence trends by building. No path to connect recruiting/onboarding/PD.",
+      month_12_to_18: "Pain Onset: The $10K-18K annual payroll reconciliation cost becomes visible. Union reps complain about CBA configuration gaps. HR director realizes Red Rover is a point solution, not a platform. Renewal pricing conversation surfaces whether this was a good investment. District begins competitive re-evaluation.",
+      month_18_to_24: "Return to Frontline: District re-evaluates Frontline. Discovers payroll integration has no manual reconciliation burden. Realizes Frontline's CBA depth handles their union agreement natively. Sees the path to integrated recruiting/onboarding/PD. Either returns as an existing customer or replaces Red Rover with Frontline.",
+    },
+    talking_points: [
       {
-        signal: "Payroll Reconciliation Hits a Wall",
-        timing: "6–18 MONTHS POST GO-LIVE",
-        watchfor: "Payroll team is complaining about manual CSV exports at every pay period close. HR director mentions 'hours we didn't expect' or 'our business office is frustrated.' Finance director flags the reconciliation process during a budget review. Substitutes' hours are frequently miscounted, leading to payroll corrections.",
-        script: "\"We've seen this come up a lot with districts that made a similar switch. The license fee looks right at signing — but the reconciliation labor that shows up every pay period is rarely in the original calculation. Want me to walk through what that typically looks like for a district your size?\""
+        headline: "Red Rover works great... until it doesn't.",
+        body: "The first 6-9 months are golden. Fast implementation, excited users, great mobile experience. But here's what happens next: you realize absence data doesn't flow to payroll. Every pay period your HR team is manually reconciling. You hit walls with your union's complex CBA rules. Your HR director asks 'How many teachers are absent in Building 4 by reason?' and Red Rover can't answer it. That's when the true cost of a point solution becomes real.",
+        scenario: "Best used when prospect says: 'We're just trying Red Rover for a year' or 'We want something simple and modern.'"
       },
       {
-        signal: "CBA Renewal Exposes Configurability Limits",
-        timing: "AT CONTRACT RENEWAL / BARGAINING",
-        watchfor: "District recently negotiated a new collective bargaining agreement with new step-placement rules, leave accrual changes, or extra duty pay structures. HR is trying to configure new rules into Red Rover and hitting dead ends. Union reps are pushing back on tracking accuracy. Substitute pay rates are being calculated manually outside the system.",
-        script: "\"Union contract changes are exactly where we see complexity surface that wasn't visible at the original purchase decision. What does your new agreement include on substitute step placement? I want to understand where the configuration request is stalling.\""
+        headline: "We have references who tried Red Rover and came back.",
+        body: "Frontline has worked with districts who switched to Red Rover and returned within 18-24 months. Not because Red Rover is bad software — it's not. But because a point solution works great for filling subs and breaks when you need it to connect to everything else. We can connect you with those references directly. They can tell you exactly what they hit and why they returned.",
+        scenario: "Use when prospect is seriously evaluating Red Rover. This is credibility ammunition: 'You're not the first to ask this. Let me introduce you to someone who walked this path.'"
       },
       {
-        signal: "Growth Outpaces the Product",
-        timing: "YEAR 2–3 / AFTER EXPANSION",
-        watchfor: "District has opened new schools or grown past ~3,000 students since go-live. They're trying to manage a larger sub pool than Red Rover's analytics can support. HR is asking for building-level trend reporting that doesn't exist. New HR Director or Superintendent was hired and is asking 'why can't we see X' for the first time.",
-        script: "\"Districts often make the right decision for their size at the time. What we hear from districts that have grown is that the analytics ceiling tends to surface first — the questions leadership is asking just can't be answered. What's your leadership asking for that you can't pull today?\""
+        headline: "The payroll reconciliation cost is a hidden killer.",
+        body: "Red Rover's pricing looks 25-35% cheaper than Frontline. That's true upfront. But every month your HR team is exporting CSVs, uploading them to payroll, and manually verifying that absence hours match sub pay records. Most districts don't account for this labor until month 8-10, when a finance person says 'Wait, we're spending $800-1,500/month in HR time on this?' At $35/hr admin rate, that's $10K-18K annually — often exceeding the price difference entirely. Frontline's payroll integration eliminates that burden from day one.",
+        scenario: "Deploy this whenever price comes up. It reframes the entire ROI conversation."
       },
       {
-        signal: "Suite Ambition Exceeds Point Solution",
-        timing: "YEAR 2+ / BUDGET PLANNING CYCLE",
-        watchfor: "District is starting to talk about adding recruiting, onboarding, or professional development — and realizing Red Rover has no path to those. IT director is frustrated by the number of disconnected systems. New strategic plan mentions 'integrated HR.' Board is asking about staff lifecycle data that requires cross-system reporting.",
-        script: "\"When a district starts asking 'what would it look like to have all of this connected,' that's usually the signal that the point solution has done its job — and the next question is what the platform strategy looks like. What's on the HR roadmap for the next 2-3 years?\""
+        headline: "Point solutions don't age well in K-12.",
+        body: "Year 1, Red Rover is your absence solution. Year 2, you want to integrate recruiting — they have no recruiting module. Year 3, you want professional development connected to absence data — Red Rover can't do it. Year 4, you want compliance reporting that ties attendance to evaluations — you're back at the drawing board. Frontline was built as a platform with this path already defined. When you're ready to expand, you don't re-implement.",
+        scenario: "Use in strategic conversations with superintendents or CFOs. This is about total cost of ownership and avoiding the 're-implementation tax.'"
       },
       {
-        signal: "New Leader Inherited the Problem",
-        timing: "ANY TIME — LEADERSHIP TRANSITION",
-        watchfor: "New HR Director, Superintendent, or CFO joined in the past 6–12 months. They're doing a vendor audit or system review. They've never had a direct relationship with Frontline and have no loyalty to the prior decision. They're asking 'why do we have this?' rather than defending it.",
-        script: "\"New leaders often inherit vendor decisions they weren't part of. The most valuable thing I can do is give you an honest picture of what districts your size and complexity are using and why — so you can make the right call for your team, not just continue what was there.\""
-      }
+        headline: "Complex CBAs + Red Rover = reconciliation nightmare.",
+        body: "If your district has a complex union agreement with step-based pay, multiple job situations, FMLA tracking, and variable sub rates, Red Rover will hit configurability walls within 6 months. You'll either live with workarounds or face a re-implementation. Frontline's CBA logic handles every K-12 union scenario natively. We've been building this for 25+ years. Red Rover is 5 years into it. That experience gap is real.",
+        scenario: "Lead with this immediately if you know the prospect has an active union."
+      },
     ],
-    advisor_framing: "The tone that wins these conversations isn't 'we knew Red Rover wouldn't work.' It's 'we understand why you made that decision, and we want to make sure you have everything you need to make the right call now.' Districts that left and came back are not failures — they're districts that grew into needing more. Treat them that way and the reference story writes itself.",
-    testimonials: [
-      {
-        status: "needs",
-        trigger: "Payroll Reconciliation",
-        quote: "PLACEHOLDER — Seeking district testimony on reconciliation hours post-Red Rover. Target: mid-size district, 2–4K students, returned within 18 months citing payroll burden.",
-        usage: "Use in proposals and discovery calls when finance director is in the room"
+    boomerang_reference_strategy: {
+      setup: "When a prospect says they're considering Red Rover, here's the reference approach:",
+      step_1: "Acknowledge the appeal: 'Red Rover's UX and speed are legitimate advantages. That's why they've won. Here's what I'd want you to know.'",
+      step_2: "Tell the boomerang story: 'We have customers who switched to Red Rover 18 months ago. They loved it at first. But when they hit payroll integration gaps and CBA configurability limits in production, they came back. I'd like to introduce you to them — they can tell you exactly what they hit and when they knew Red Rover wasn't the long-term answer.'",
+      step_3: "Give them the choice: 'You can either learn this from them now, or learn it 18 months from now when you're facing a re-implementation. We recommend the first path.'",
+      step_4: "Offer the escape hatch: 'And if you do go with Red Rover and hit these walls like others have, we have a clear migration path to bring your data back. It's not painless, but it's doable.'",
+    },
+    objection_handlers: {
+      "We want to try Red Rover for a year and see how it goes.": {
+        reframe: "That's reasonable. But here's what typically happens: the first year goes great. Year 2 is when the structural limitations surface. By then you've sunk implementation costs, trained everyone, and changing systems is expensive. The time to ask hard questions about payroll integration, CBA depth, and suite expansion is now — before you're locked in.",
+        talking_point: "Instead of a 1-year pilot with Red Rover, how about a 3-month evaluation alongside Frontline? Meet with our CBA specialist, run a payroll integration scenario, and see what the full picture looks like. If Red Rover is still the answer after that, you've made a more informed decision."
       },
-      {
-        status: "needs",
-        trigger: "CBA Complexity",
-        quote: "PLACEHOLDER — Seeking district testimony on union configuration limits in Red Rover. Target: district with active bargaining unit and step-based sub pay.",
-        usage: "Use with HR Directors in unionized districts evaluating Red Rover"
+      "Red Rover's mobile app is so much better than Frontline's.": {
+        reframe: "The mobile experience is genuinely better — we acknowledge that. Substitutes do prefer Red Rover's app. But here's what we see: substitutes care about getting jobs filled quickly. Frontline's app does that. What we see in boomerang cases is that HR directors care about something different: does absence data flow to payroll without manual work? Can I answer why Building 4 has high absence? Will this system support our district's growth? That's where Red Rover hits walls.",
+        talking_point: "Side-by-side, Red Rover wins the mobile UX demo. But in a board meeting 18 months in, when finance is asking 'Why is our HR team spending 40 hours per month on payroll reconciliation?', that mobile app doesn't answer the question. We need both — great UX and operational integration. We have both."
       },
-      {
-        status: "needs",
-        trigger: "Growth / Suite Expansion",
-        quote: "PLACEHOLDER — Seeking district testimony on suite limitation discovery. Target: district that started small, grew, and needed the full HCM platform path.",
-        usage: "Use in strategic planning conversations with Superintendents and HR Directors"
-      }
+      "Red Rover's implementation is 2 months; Frontline's is 6 months.": {
+        reframe: "That's true for absence-only. Red Rover is fast because they're implementing one module. When boomerang customers come back, they want recruiting, onboarding, PD, analytics — the full suite. That implementation is longer. But here's the key: you're not doing three separate implementations. You're doing one integrated implementation where absence data automatically flows into the rest of the system.",
+        talking_point: "If you're just doing absence-only for the next 18 months, Red Rover's speed is an advantage. If you have a 3-5 year vision for integrated HCM, you're better off doing the longer implementation once rather than doing a fast Red Rover implementation and then a painful re-implementation later."
+      },
+      "Our CFO loves Red Rover's pricing.": {
+        reframe: "Your CFO is looking at license fees. Your HR director will be looking at labor costs. Introduce both to the payroll reconciliation analysis. When a $25/user, 100-user district discovers they're spending $12K+ annually in manual payroll reconciliation labor, the cost equation changes dramatically. Frontline's pricing + integrated payroll = often lower TCO.",
+        talking_point: "Show us the Red Rover contract. We'll run a side-by-side TCO that includes implementation, licensing, and payroll reconciliation labor. Most of the time, Frontline's TCO is equal or lower. If it's not, let's understand why and talk about it openly."
+      },
+      "Red Rover is modern, Frontline feels legacy.": {
+        reframe: "Modern UX is table stakes. Frontline has invested heavily in modernization too. But the real question is: does modern deliver better outcomes? We measure success not by UI ratings, but by districts that stay with us because we solve their business problems long-term. Red Rover wins on first impression. We win on 24-month satisfaction. Ask Red Rover for a reference from a district that switched 2+ years ago. Most districts we talk to that tried Red Rover come back within 18-24 months when the operational limitations hit.",
+        talking_point: "Modern and fresh are great for the first 6 months. But when you're running an actual school district with complex payroll, union agreements, compliance requirements, and multi-year HCM strategy, you need both modern AND reliable. We have both. Red Rover has modern. When they hit their first real crisis, they'll learn what 'reliable' means."
+      },
+      "Red Rover's integrations are more extensive.": {
+        reframe: "They have more integration partners listed because they partner with everything. But what does integration actually mean? For most Red Rover integrations, it means a CSV export and manual upload to your other systems. That's not integration — that's a workaround. Real integration is bidirectional, real-time data flow. Our payroll integrations are real integrations. Most of theirs are file exports.",
+        talking_point: "Ask them: When absence data is recorded in Red Rover, does it automatically sync to your payroll system in real-time, or do you export a CSV and manually upload it every pay period? If they say CSV and manual upload, then ask us the same question about Frontline + your payroll. The answer will be: automated, real-time, zero manual steps. That's the difference between integration breadth and integration depth."
+      },
+      "Red Rover is a newer, fresher company.": {
+        reframe: "Newer doesn't always mean better. Fresher means they haven't solved K-12's hardest problems yet. Frontline has 25+ years of playbook for union negotiations, complex payroll, state reporting, and regulatory compliance. K-12 HCM is not a commodity — every district's union agreement, payroll structure, and compliance requirements are different. When your district faces a crisis, you want a vendor that's solved similar problems 500+ times before.",
+        talking_point: "There's a cost to being the learning customer. Red Rover is bright, fast, and modern. But when they encounter their first complex union CBA they've never seen, or a state reporting requirement they don't understand, or a payroll reconciliation disaster at month 12, they'll be learning. Frontline has a 25-year playbook for every one of those situations. In K-12, experience matters."
+      },
+    },
+    when_to_deploy: [
+      "Prospect has mentioned Red Rover as a serious option",
+      "Prospect seems excited about Red Rover's UX/speed",
+      "Deal cycle is in discovery/evaluation phase (not yet signed)",
+      "District has complex union agreement (predicts payroll reconciliation pain)",
+      "District has mentioned desire for integrated HCM (recruiting, PD, etc.)",
+      "You have access to a boomerang customer reference who can speak to the experience",
+    ],
+    reference_qualifications: "Ideal boomerang references should:",
+    ref_criteria: [
+      "Have switched from Frontline to Red Rover",
+      "Have returned to Frontline or are in process of returning (or can explain why they stayed with Red Rover)",
+      "Can speak to specific pain points they hit (payroll reconciliation, CBA gaps, analytics limitations)",
+      "Are willing to have follow-up conversations with prospects considering Red Rover",
+      "Can discuss timeline: when they left, what they discovered, when they realized the gap, decision to return",
     ]
-  }
+  },
+  // End win_back section
 },
-
-// ── POWERSCHOOL ────────────────────────────────────────────────────
 powerschool: {
   name: "PowerSchool",
   tagline: "Unified Talent · Full K-12 HCM Suite · Leading Competitor Across All FL Pillars",
@@ -1848,11 +1767,9 @@ function selectComp(id, btn) {
 function switchTab(t) {
   currentTab = t;
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  const activeBtn = document.querySelector(`[data-tab="${t}"]`);
-  if (activeBtn) activeBtn.classList.add('active');
+  document.querySelector(`[data-tab="${t}"]`).classList.add('active');
   document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-  const activeContent = document.getElementById('tab-' + t);
-  if (activeContent) activeContent.classList.add('active');
+  document.getElementById('tab-' + t).classList.add('active');
 }
 
 function render() {
@@ -1882,8 +1799,8 @@ function render() {
       <button class="tab-btn ${currentTab==='traps'?'active':''}" data-tab="traps" onclick="switchTab('traps')">🪤 Trap Questions</button>
       <button class="tab-btn ${currentTab==='talking'?'active':''}" data-tab="talking" onclick="switchTab('talking')">💬 Talking Points</button>
       <button class="tab-btn ${currentTab==='battlecard'?'active':''}" data-tab="battlecard" onclick="switchTab('battlecard')">⚔ Battlecard</button>
+      <button class="tab-btn ${currentTab==='winback'?'active':''}" data-tab="winback" onclick="switchTab('winback')">🎯 Win-Back Strategy</button>
       <button class="tab-btn ${currentTab==='moves'?'active':''}" data-tab="moves" onclick="switchTab('moves')">📡 Intel Feed</button>
-      ${d.winback ? `<button class="tab-btn ${currentTab==='winback'?'active':''}" data-tab="winback" onclick="switchTab('winback')" style="color:var(--green)">↩ Win-Back <span class="tab-star" style="background:var(--green)">NEW</span></button>` : ''}
     </div>
 
     <!-- MCI ANSWERS ──────────────────────────────────────────────── -->
@@ -2032,6 +1949,114 @@ function render() {
       </div>
     </div>
 
+    <!-- WIN-BACK STRATEGY ────────────────────────────────────────────────── -->
+    <div class="tab-content ${currentTab==='winback'?'active':''}" id="tab-winback">
+      ${!d.win_back ? `
+        <div class="card" style="padding:40px;text-align:center;color:var(--text-muted)">
+          <div style="font-size:32px;margin-bottom:16px">🎯</div>
+          <div style="font-weight:600;margin-bottom:8px">Win-Back Strategy Not Available</div>
+          <div>This competitor doesn't have documented win-back scenarios yet.</div>
+        </div>
+      ` : `
+        <div style="display:grid;gap:24px">
+          <!-- HEADLINE & CONTEXT -->
+          <div class="card">
+            <div style="font-size:18px;font-weight:700;color:var(--fl-orange);margin-bottom:8px">${d.win_back.headline}</div>
+            <div style="color:var(--text-secondary);font-size:14px;line-height:1.6">${d.win_back.context}</div>
+          </div>
+
+          <!-- TIMELINE -->
+          <div class="card">
+            <div class="card-label">📅 Typical Boomerang Timeline</div>
+            <div style="display:grid;gap:12px;font-size:13px">
+              ${Object.entries(d.win_back.typical_timeline).map(([phase, desc]) => `
+                <div style="border-left:3px solid var(--fl-orange);padding-left:12px;padding-top:8px;padding-bottom:8px">
+                  <div style="font-weight:600;color:var(--text-primary);margin-bottom:4px">${phase.replace(/_/g,' ').toUpperCase()}</div>
+                  <div style="color:var(--text-secondary);line-height:1.5">${desc}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- TALKING POINTS -->
+          <div class="card">
+            <div class="card-label">💬 Win-Back Talking Points</div>
+            <div style="display:grid;gap:16px">
+              ${d.win_back.talking_points.map(tp => `
+                <div style="border:1px solid var(--border);border-radius:8px;padding:16px;background:var(--surface-2)">
+                  <div style="font-weight:600;color:var(--fl-orange);margin-bottom:6px">${tp.headline}</div>
+                  <div style="color:var(--text-secondary);font-size:13px;line-height:1.6;margin-bottom:8px">${tp.body}</div>
+                  <div style="background:var(--fl-blue-light);border-left:3px solid var(--fl-blue);padding:8px 12px;border-radius:4px;font-size:12px;color:var(--fl-blue);font-style:italic">${tp.scenario}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- REFERENCE STRATEGY -->
+          <div class="card">
+            <div class="card-label">🤝 How to Use Boomerang References</div>
+            <div style="display:grid;gap:12px;font-size:13px">
+              <div style="color:var(--text-secondary);font-weight:600;margin-bottom:4px">Setup:</div>
+              <div style="color:var(--text-secondary)">${d.win_back.boomerang_reference_strategy.setup}</div>
+              ${['step_1','step_2','step_3','step_4'].map((step, idx) => `
+                <div style="border-left:3px solid var(--green);padding-left:12px;padding-top:8px;padding-bottom:8px;margin-top:4px">
+                  <div style="font-weight:600;color:var(--fl-blue);margin-bottom:4px">Step ${idx+1}:</div>
+                  <div style="color:var(--text-secondary);line-height:1.5">${d.win_back.boomerang_reference_strategy[step]}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- OBJECTION HANDLERS -->
+          <div class="card">
+            <div class="card-label">🛡️ Objection Handlers</div>
+            <div style="display:grid;gap:16px">
+              ${Object.entries(d.win_back.objection_handlers).map(([objection, response]) => `
+                <div style="border:1px solid var(--border);border-radius:8px;padding:16px">
+                  <div style="font-weight:600;color:var(--red);margin-bottom:8px;font-style:italic">"${objection}"</div>
+                  <div style="margin-bottom:12px">
+                    <div style="font-weight:600;color:var(--text-primary);font-size:12px;margin-bottom:4px">YOUR REFRAME:</div>
+                    <div style="color:var(--text-secondary);font-size:13px;line-height:1.5">${response.reframe}</div>
+                  </div>
+                  <div>
+                    <div style="font-weight:600;color:var(--text-primary);font-size:12px;margin-bottom:4px">TALKING POINT:</div>
+                    <div style="color:var(--text-secondary);font-size:13px;line-height:1.5">${response.talking_point}</div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- DEPLOYMENT TRIGGERS -->
+          <div class="card">
+            <div class="card-label">🎯 When to Deploy Win-Back Strategy</div>
+            <div style="display:grid;gap:8px;font-size:13px">
+              ${d.win_back.when_to_deploy.map(trigger => `
+                <div style="display:flex;gap:8px;align-items:flex-start">
+                  <div style="color:var(--green);font-weight:700">✓</div>
+                  <div style="color:var(--text-secondary)">${trigger}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- REFERENCE QUALIFICATIONS -->
+          <div class="card" style="background:var(--fl-orange-light);border:1px solid var(--fl-orange-mid)">
+            <div class="card-label" style="color:var(--fl-orange)">👥 Ideal Boomerang Reference Qualifications</div>
+            <div style="display:grid;gap:8px;font-size:13px">
+              ${d.win_back.ref_criteria.map(criteria => `
+                <div style="display:flex;gap:8px;align-items:flex-start">
+                  <div style="color:var(--fl-orange);font-weight:700">●</div>
+                  <div style="color:var(--text-secondary)">${criteria}</div>
+                </div>
+              `).join('')}
+            </div>
+            <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--fl-orange-mid);font-size:12px;color:var(--amber);font-weight:600">ACTION: Document 2-3 boomerang customer stories with specific timelines, pain points, and reasons for return. This becomes your strongest proof point against this competitor.</div>
+          </div>
+        </div>
+      `}
+    </div>
+
     <!-- INTEL FEED ────────────────────────────────────────────────── -->
     <div class="tab-content ${currentTab==='moves'?'active':''}" id="tab-moves">
       <div class="card">
@@ -2051,66 +2076,6 @@ function render() {
         </div>
       </div>
     </div>
-
-    <!-- WIN-BACK ───────────────────────────────────────────────────── -->
-    ${d.winback ? `
-    <div class="tab-content ${currentTab==='winback'?'active':''}" id="tab-winback">
-
-      <div class="wb-hero">
-        <div class="wb-hero-label">↩ Win-Back Intelligence — Red Rover</div>
-        <div class="wb-hero-text">${d.winback.intro}</div>
-      </div>
-
-      <div class="wb-section-title">🔍 The 5 Return Triggers — What to Watch For & What to Say</div>
-
-      <div class="wb-trigger-grid">
-        ${d.winback.triggers.map(t => `
-          <div class="wb-trigger-card">
-            <div class="wb-trigger-top">
-              <div class="wb-trigger-signal">${t.signal}</div>
-              <div class="wb-timing-pill">${t.timing}</div>
-            </div>
-            <div class="wb-trigger-section-label">Watch For</div>
-            <div class="wb-trigger-watchfor">${t.watchfor}</div>
-            <div class="wb-trigger-section-label">Trusted Advisor Script</div>
-            <div class="wb-trigger-script">${t.script}</div>
-          </div>
-        `).join('')}
-      </div>
-
-      <div class="wb-section-title">🤝 The Trusted Advisor Tone — How to Frame Every Win-Back Conversation</div>
-
-      <div class="wb-advisor-box">
-        <div class="wb-advisor-label">⚖ Tone Principle</div>
-        <div class="wb-advisor-text">
-          ${d.winback.advisor_framing}<br><br>
-          <strong>Open with:</strong> "Tell me about your experience — what was working, and where did things start to get complicated?"<br><br>
-          <strong>Validate their decision:</strong> "Red Rover was the right call for what you needed at the time. The question now is what you need for the next 3 years."<br><br>
-          <strong>Never say:</strong> "We told you so." · "Red Rover was always going to fall short." · "This is what happens when you go with the cheaper option."<br><br>
-          <strong>Always offer:</strong> A peer reference from a district that made the same journey. This is more powerful than any talking point.
-        </div>
-      </div>
-
-      <div class="wb-section-title">💬 Voice of Customer — Win-Back Testimonials</div>
-
-      <div style="background:var(--amber-light);border:1px solid var(--amber-mid);border-left:4px solid var(--amber);border-radius:var(--radius);padding:14px 18px;margin-bottom:16px;">
-        <div style="font-size:10px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--amber);font-family:'JetBrains Mono',monospace;margin-bottom:6px;">⚠ Fieldwork Needed</div>
-        <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">These testimonial slots are currently placeholders. The MCI system needs 3–5 validated win-back district stories — organized by trigger type — to make this section live. See the Win-Back Content Structure document for the interview guide and data collection framework.</div>
-      </div>
-
-      <div class="wb-testimonial-grid">
-        ${d.winback.testimonials.map(t => `
-          <div class="wb-testimonial-card ${t.status === 'ready' ? 'filled' : ''}">
-            <div class="wb-t-status ${t.status === 'ready' ? 'ready' : 'needs'}">${t.status === 'ready' ? '✓ Ready to Use' : 'Needs Fieldwork'}</div>
-            <div class="wb-t-trigger-tag">Trigger: ${t.trigger}</div>
-            <div class="wb-t-quote ${t.status === 'ready' ? '' : 'placeholder'}">${t.status === 'ready' ? `"${t.quote}"` : t.quote}</div>
-            <div class="wb-t-usage">📋 ${t.usage}</div>
-          </div>
-        `).join('')}
-      </div>
-
-    </div>
-    ` : ''}
   `;
 }
 
